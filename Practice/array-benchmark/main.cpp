@@ -2,8 +2,8 @@
 #include <stdlib.h>
 #include "benchmark/benchmark.h"
 
-#define ROWS 5000
-#define COLS 5000
+#define ROWS 500
+#define COLS 500
 
 int **arr;
 
@@ -35,7 +35,7 @@ static void DoTeardown(const benchmark::State &state)
     free(arr);
 }
 
-static void BM_rows_cols(benchmark::State &state)
+static void rows_cols(benchmark::State &state)
 {
     for (auto _ : state)
     {
@@ -50,7 +50,7 @@ static void BM_rows_cols(benchmark::State &state)
     }
 }
 
-static void BM_cols_rows(benchmark::State &state)
+static void cols_rows(benchmark::State &state)
 {
     for (auto _ : state)
     {
@@ -65,7 +65,7 @@ static void BM_cols_rows(benchmark::State &state)
     }
 }
 
-BENCHMARK(BM_rows_cols)->Threads(1)->Threads(8)->Setup(DoSetup)->Teardown(DoTeardown);
-BENCHMARK(BM_cols_rows)->Threads(1)->Threads(8)->Setup(DoSetup)->Teardown(DoTeardown);
+BENCHMARK(rows_cols)->Threads(1)->Threads(8)->Setup(DoSetup)->Teardown(DoTeardown);
+BENCHMARK(cols_rows)->Threads(1)->Threads(8)->Setup(DoSetup)->Teardown(DoTeardown);
 
 BENCHMARK_MAIN();

@@ -1,0 +1,4 @@
+{
+    "cmake.sourceDirectory": "${workspaceFolder}/array-benchmark",
+    "cmake.generator": "MinGW Makefiles"
+}
