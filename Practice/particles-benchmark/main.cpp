@@ -3,7 +3,7 @@
 #include <math.h>
 // #include "benchmark/benchmark.h"
 
-#define N 4096
+#define N 20000
 
 struct float_3
 {
@@ -19,6 +19,8 @@ struct Particle
     float_3 acc;
 };
 
+Particle *particles;
+
 void allocate(Particle **);
 void setup(Particle **);
 void calculation_slow(Particle **);
@@ -27,8 +29,6 @@ void teardown(Particle **);
 
 int main(void)
 {
-    Particle *particles;
-
     allocate(&particles);
 
     setup(&particles);
@@ -144,3 +144,35 @@ void teardown(Particle **particles)
 {
     free(*particles);
 }
+
+// static void DoSetup(const benchmark::State &state)
+// {
+//     allocate(&particles);
+//     setup(&particles);
+// }
+
+// static void DoTeardown(const benchmark::State &state)
+// {
+//     teardown(&particles);
+// }
+
+// static void particles_slow_benchmark(benchmark::State &state)
+// {
+//     for (auto _ : state)
+//     {
+//         calculation_slow(&particles);
+//     }
+// }
+
+// static void particles_fast_benchmark(benchmark::State &state)
+// {
+//     for (auto _ : state)
+//     {
+//         calculation_fast(&particles);
+//     }
+// }
+
+// BENCHMARK(particles_slow_benchmark)->Threads(1)->Threads(8)->Setup(DoSetup)->Teardown(DoTeardown);
+// BENCHMARK(particles_fast_benchmark)->Threads(1)->Threads(8)->Setup(DoSetup)->Teardown(DoTeardown);
+
+// BENCHMARK_MAIN();
