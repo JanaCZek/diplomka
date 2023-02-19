@@ -1,0 +1,12 @@
+[submodule "Practice/tracy"]
+	path = Practice/tracy
+	url = https://github.com/wolfpld/tracy.git
+[submodule "Practice/libs/tracy"]
+	path = Practice/libs/tracy
+	url = https://github.com/wolfpld/tracy.git
+[submodule "ProfileApps/libs/tracy"]
+	path = ProfileApps/libs/tracy
+	url = https://github.com/wolfpld/tracy.git
+[submodule "ProfileTest/tracy"]
+	path = ProfileTest/tracy
+	url = https://github.com/wolfpld/tracy.git
