@@ -1,6 +1,3 @@
-[submodule "Practice/tracy"]
-	path = Practice/tracy
-	url = https://github.com/wolfpld/tracy.git
 [submodule "Practice/libs/tracy"]
 	path = Practice/libs/tracy
 	url = https://github.com/wolfpld/tracy.git
