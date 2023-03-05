@@ -16,6 +16,7 @@ void matrix_multiplications();
 void loop_dependence();
 void loop_unrolling_slow(double* array, int n, double result);
 void loop_unrolling_fast(double* array, int n, double result);
+void cache_associativity_limit(int step);
 
 int main(void)
 {
@@ -260,6 +261,22 @@ void loop_unrolling_fast(double* array, int n, double* result) {
     }
     
     *result = accumulator;
+}
+
+// Steps: 30, 32, 60, 64, 120, 128, 250, 256, 510, 512
+void cache_associativity_limit(int step) {
+
+    double *array;
+    int n = 0;// A number to ensure the same number of memory accesses for every step
+
+    // Array initialization
+
+    double sum = 0.0;
+
+    for (int i = 0; i < n; i += step)
+    {
+        sum += array[i];
+    }
 }
 
 // static void DoSetup(const benchmark::State &state)
