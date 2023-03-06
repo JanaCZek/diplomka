@@ -11,5 +11,4 @@ add_subdirectory(particles-benchmark)
 add_subdirectory(update-benchmark)
 
 add_subdirectory("libs\\benchmark" "benchmark")
-add_subdirectory("libs\\googletest" "googletest")
 add_subdirectory("libs\\tracy" "tracy")

@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <tracy/Tracy.hpp>
-// #include "benchmark/benchmark.h"
+#include <benchmark/benchmark.h>
 
 #define ROWS 5000
 #define COLS 5000
@@ -12,6 +12,8 @@ void setup();
 void teardown();
 void rows_cols();
 void cols_rows();
+int rows_cols_sum();
+int cols_rows_sum();
 void matrix_multiplications();
 void loop_dependence();
 void loop_unrolling_slow(double* array, int n, double result);
@@ -20,35 +22,17 @@ void cache_associativity_limit(int step);
 
 int main(void)
 {
-    int **array;
-
-    // Array initialization
-
-    int sum = 0;
-    for (int i = 0; i < ROWS; i++)
-    {
-        for (int j = 0; j < COLS; j++)
-        {
-            sum += array[i][j];
-        }
-    }
-
-    int sum = 0;
-    for (int j = 0; j < COLS; j++)
-    {
-        for (int i = 0; i < ROWS; i++)
-        {
-            sum += array[i][j];
-        }
-    }
-
     ZoneScopedS(5);
 
     setup();
 
-    rows_cols();
+    int sum = cols_rows_sum();
 
-    cols_rows();
+    printf("%d\n", sum);
+
+    sum = rows_cols_sum();
+
+    printf("%d\n", sum);
 
     teardown();
 
@@ -86,7 +70,7 @@ void teardown()
 
     free(arr);
 }
-void rows_cols()
+int rows_cols_sum()
 {
     ZoneScopedS(5);
     int sum = 0;
@@ -97,8 +81,10 @@ void rows_cols()
             sum += arr[i][j];
         }
     }
+
+    return sum;
 }
-void cols_rows()
+int cols_rows_sum()
 {
     ZoneScopedS(5);
     int sum = 0;
@@ -109,6 +95,8 @@ void cols_rows()
             sum += arr[i][j];
         }
     }
+
+    return sum;
 }
 
 void matrix_multiplications()
@@ -279,65 +267,65 @@ void cache_associativity_limit(int step) {
     }
 }
 
-// static void DoSetup(const benchmark::State &state)
-// {
-//     arr = (int **)calloc(ROWS, sizeof(int *));
+ //static void DoSetup(const benchmark::State &state)
+ //{
+ //    arr = (int **)calloc(ROWS, sizeof(int *));
 
-//     for (int row = 0; row < COLS; row++)
-//     {
-//         arr[row] = (int *)calloc(COLS, sizeof(int *));
-//     }
+ //    for (int row = 0; row < COLS; row++)
+ //    {
+ //        arr[row] = (int *)calloc(COLS, sizeof(int *));
+ //    }
 
-//     for (int i = 0; i < ROWS; i++)
-//     {
-//         for (int j = 0; j < COLS; j++)
-//         {
-//             arr[i][j] = ((i + 1) * (j + 1)) % 123;
-//         }
-//     }
-// }
+ //    for (int i = 0; i < ROWS; i++)
+ //    {
+ //        for (int j = 0; j < COLS; j++)
+ //        {
+ //            arr[i][j] = ((i + 1) * (j + 1)) % 123;
+ //        }
+ //    }
+ //}
 
-// static void DoTeardown(const benchmark::State &state)
-// {
-//     for (int row = 0; row < COLS; row++)
-//     {
-//         free(arr[row]);
-//     }
+ //static void DoTeardown(const benchmark::State &state)
+ //{
+ //    for (int row = 0; row < COLS; row++)
+ //    {
+ //        free(arr[row]);
+ //    }
 
-//     free(arr);
-// }
+ //    free(arr);
+ //}
 
-// static void rows_cols(benchmark::State &state)
-// {
-//     for (auto _ : state)
-//     {
-//         int sum = 0;
-//         for (int i = 0; i < ROWS; i++)
-//         {
-//             for (int j = 0; j < COLS; j++)
-//             {
-//                 sum += arr[i][j];
-//             }
-//         }
-//     }
-// }
+ //static void rows_cols(benchmark::State &state)
+ //{
+ //    for (auto _ : state)
+ //    {
+ //        int sum = 0;
+ //        for (int i = 0; i < ROWS; i++)
+ //        {
+ //            for (int j = 0; j < COLS; j++)
+ //            {
+ //                sum += arr[i][j];
+ //            }
+ //        }
+ //    }
+ //}
 
-// static void cols_rows(benchmark::State &state)
-// {
-//     for (auto _ : state)
-//     {
-//         int sum = 0;
-//         for (int j = 0; j < COLS; j++)
-//         {
-//             for (int i = 0; i < ROWS; i++)
-//             {
-//                 sum += arr[i][j];
-//             }
-//         }
-//     }
-// }
+ //static void cols_rows(benchmark::State &state)
+ //{
+ //    for (auto _ : state)
+ //    {
+ //        int sum = 0;
+ //        for (int j = 0; j < COLS; j++)
+ //        {
+ //            for (int i = 0; i < ROWS; i++)
+ //            {
+ //                sum += arr[i][j];
+ //            }
+ //        }
+ //    }
+ //}
 
-// BENCHMARK(rows_cols)->Threads(1)->Threads(8)->Setup(DoSetup)->Teardown(DoTeardown);
-// BENCHMARK(cols_rows)->Threads(1)->Threads(8)->Setup(DoSetup)->Teardown(DoTeardown);
+ //BENCHMARK(rows_cols)->Threads(1)->Threads(8)->Setup(DoSetup)->Teardown(DoTeardown);
+ //BENCHMARK(cols_rows)->Threads(1)->Threads(8)->Setup(DoSetup)->Teardown(DoTeardown);
 
-// BENCHMARK_MAIN();
+ //BENCHMARK_MAIN();
