@@ -19,6 +19,8 @@ void loop_dependence();
 void loop_unrolling_slow(double* array, int n, double result);
 void loop_unrolling_fast(double* array, int n, double result);
 void cache_associativity_limit(int step);
+void prefetching();
+void hot_cold();
 
 int main(void)
 {
@@ -264,6 +266,95 @@ void cache_associativity_limit(int step) {
     for (int i = 0; i < n; i += step)
     {
         sum += array[i];
+    }
+}
+
+void prefetching() {
+
+    double *array;
+    int n = 0;// A number to ensure the same number of memory accesses for every step
+
+    // Array initialization
+
+    double sum = 0.0;
+
+    // Sequential
+    for (int i = 0; i < n; i++)
+    {
+        sum += array[i];
+    }
+
+    // Strided
+    int step;
+    for (int i = 0; i < n; i += step)
+    {
+        sum += array[i];
+    }
+
+    // Pattern
+    int x;
+    for (int i = 0; i < n; i = 2 * x + 5)
+    {
+        sum += array[i];
+    }
+
+    // Pattern witch prefetching
+    for (int i = 0; i < n; i = 2 * x + 5)
+    {
+        __builtin_prefetch(&array[2 * x + 5]);
+        sum += array[i];
+    }
+
+    // Random
+    int seed;
+    srand(seed);
+
+    for (int i = 0; i < n; i++)
+    {
+        int index = rand() % n;
+        sum += array[index];
+    }
+}
+
+void hot_cold() {
+
+    // // Original
+    // struct Data {
+    //     double a, b, c, d, e, f, g, h, result;
+    // };
+
+    // Data* data;
+    // int n = 0;// Number of elements in data array
+
+    // // Array initialization
+
+    // for (int i = 0; i < n; i++)
+    // {
+    //     data[i].result = data[i].a + data[i].b * data[i].c;
+    // }
+    
+    // Hot and cold data separated
+    struct DataHot {
+        double a, b, c, result;
+    };
+
+    struct DataCold {
+        double d, e, f, g, h;
+    };
+
+    struct Data {
+        DataHot* hot;
+        DataCold* cold;
+    };
+
+    Data* data;
+    int n = 0;// Number of elements in data array
+
+    // Array initialization
+
+    for (int i = 0; i < n; i++)
+    {
+        data[i].hot->result = data[i].hot->a + data[i].hot->b * data[i].hot->c;
     }
 }
 
