@@ -1,10 +1,14 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <intrin.h>
+
 #include <tracy/Tracy.hpp>
 #include <benchmark/benchmark.h>
 
 #define ROWS 5000
 #define COLS 5000
+
+#define N (1 << 8)
 
 int **arr;
 
@@ -16,27 +20,103 @@ int rows_cols_sum();
 int cols_rows_sum();
 void matrix_multiplications();
 void loop_dependence();
-void loop_unrolling_slow(double* array, int n, double result);
-void loop_unrolling_fast(double* array, int n, double result);
+void loop_unrolling_slow(double *array, int n, double result);
+void loop_unrolling_fast(double *array, int n, double result);
 void cache_associativity_limit(int step);
 void prefetching();
 void hot_cold();
+void aos_soa();
+
+double vector_add_simd()
+{
+    ZoneScopedS(5);
+
+    // Vector
+    double* array = (double*)_aligned_malloc(sizeof(double) * N, 16);
+
+    // SSE specific step
+    int step = 128 / (sizeof(double) * 8);
+    int sumSize = step;
+    double* sum = (double*)malloc(sizeof(double) * sumSize);
+
+    for (int i = 0; i < N; ++i)
+    {
+        array[i] = 1.0;
+    }
+
+    for (int i = 0; i < sumSize; ++i)
+    {
+        sum[i] = 0.0;
+    }
+
+    __m128d sumVector = _mm_loadu_pd(sum);
+    __m128d* arrayVector = (__m128d*)array;
+    int vecIterations = N / step;
+
+    for (int i = 0; i < vecIterations; i++)
+    {
+        sumVector = _mm_add_pd(arrayVector[i], sumVector);
+    }
+
+    _mm_store_pd(sum, sumVector);
+
+    double sumTotal = 0.0;
+
+    for (int i = 0; i < sumSize; i++)
+    {
+        sumTotal += sum[i];
+    }
+
+    // free(array);
+    free(sum);
+
+    return sumTotal;
+}
+
+double vector_add()
+{
+    ZoneScopedS(5);
+
+    // Scalar
+    double* array = (double*)malloc(sizeof(double) * N);
+    double sum = 0.0;
+
+    // Array initialization
+
+    for (int i = 0; i < N; ++i)
+    {
+        array[i] = 1.0;
+    }
+
+    for (int i = 0; i < N; i++)
+    {
+        sum += array[i];
+    }
+
+    return sum;
+}
 
 int main(void)
 {
     ZoneScopedS(5);
 
-    setup();
+    double res = vector_add();
+    printf("%f\n", res);
 
-    int sum = cols_rows_sum();
+    res = vector_add_simd();
+    printf("%f\n", res);
 
-    printf("%d\n", sum);
+    // setup();
 
-    sum = rows_cols_sum();
+    // int sum = cols_rows_sum();
 
-    printf("%d\n", sum);
+    // printf("%d\n", sum);
 
-    teardown();
+    // sum = rows_cols_sum();
+
+    // printf("%d\n", sum);
+
+    // teardown();
 
     return 0;
 }
@@ -204,26 +284,27 @@ void loop_dependence()
     double *C;
     double *D;
 
-    int n = 10;// A number big enough to show the impact
+    int n = 10; // A number big enough to show the impact
 
     // With dependence
     for (int i = 0; i < n; i++)
     {
         A[i] = A[i] + B[i];
-        B[i+1] = C[i] + D[i];
+        B[i + 1] = C[i] + D[i];
     }
-    
+
     // Without dependence
     A[0] = A[0] + B[0];
     for (int i = 0; i < n - 1; i++)
     {
-        B[i+1] = C[i] + D[i];
-        A[i+1] = A[i+1] + B[i+1];
+        B[i + 1] = C[i] + D[i];
+        A[i + 1] = A[i + 1] + B[i + 1];
     }
-    B[n] = C[n-1] + D[n-1];
+    B[n] = C[n - 1] + D[n - 1];
 }
 
-void loop_unrolling_slow(double* array, int n, double* result) {
+void loop_unrolling_slow(double *array, int n, double *result)
+{
 
     for (int i = 0; i < n; i++)
     {
@@ -231,17 +312,18 @@ void loop_unrolling_slow(double* array, int n, double* result) {
     }
 }
 
-void loop_unrolling_fast(double* array, int n, double* result) {
+void loop_unrolling_fast(double *array, int n, double *result)
+{
 
     int i = 0;
     int limit = n - 1;
     double accumulator = 0.0;
 
     // Unrolled loop
-    for (; i < limit; i+=2)
+    for (; i < limit; i += 2)
     {
         accumulator += array[i];
-        accumulator += array[i+1];
+        accumulator += array[i + 1];
     }
 
     // Finalizing loop
@@ -249,15 +331,16 @@ void loop_unrolling_fast(double* array, int n, double* result) {
     {
         accumulator += array[i];
     }
-    
+
     *result = accumulator;
 }
 
 // Steps: 30, 32, 60, 64, 120, 128, 250, 256, 510, 512
-void cache_associativity_limit(int step) {
+void cache_associativity_limit(int step)
+{
 
     double *array;
-    int n = 0;// A number to ensure the same number of memory accesses for every step
+    int n = 0; // A number to ensure the same number of memory accesses for every step
 
     // Array initialization
 
@@ -269,10 +352,11 @@ void cache_associativity_limit(int step) {
     }
 }
 
-void prefetching() {
+void prefetching()
+{
 
     double *array;
-    int n = 0;// A number to ensure the same number of memory accesses for every step
+    int n = 0; // A number to ensure the same number of memory accesses for every step
 
     // Array initialization
 
@@ -301,7 +385,7 @@ void prefetching() {
     // Pattern witch prefetching
     for (int i = 0; i < n; i = 2 * x + 5)
     {
-        __builtin_prefetch(&array[2 * x + 5]);
+        //__builtin_prefetch(&array[2 * x + 5]);
         sum += array[i];
     }
 
@@ -316,7 +400,8 @@ void prefetching() {
     }
 }
 
-void hot_cold() {
+void hot_cold()
+{
 
     // // Original
     // struct Data {
@@ -332,23 +417,26 @@ void hot_cold() {
     // {
     //     data[i].result = data[i].a + data[i].b * data[i].c;
     // }
-    
+
     // Hot and cold data separated
-    struct DataHot {
+    struct DataHot
+    {
         double a, b, c, result;
     };
 
-    struct DataCold {
+    struct DataCold
+    {
         double d, e, f, g, h;
     };
 
-    struct Data {
-        DataHot* hot;
-        DataCold* cold;
+    struct Data
+    {
+        DataHot *hot;
+        DataCold *cold;
     };
 
-    Data* data;
-    int n = 0;// Number of elements in data array
+    Data *data;
+    int n = 0; // Number of elements in data array
 
     // Array initialization
 
@@ -358,65 +446,108 @@ void hot_cold() {
     }
 }
 
- //static void DoSetup(const benchmark::State &state)
- //{
- //    arr = (int **)calloc(ROWS, sizeof(int *));
+void aos_soa()
+{
 
- //    for (int row = 0; row < COLS; row++)
- //    {
- //        arr[row] = (int *)calloc(COLS, sizeof(int *));
- //    }
+    // Array of structures
+    // struct AoS {
+    //     double a, b, c, d, e, f, g, h, result;
+    // };
 
- //    for (int i = 0; i < ROWS; i++)
- //    {
- //        for (int j = 0; j < COLS; j++)
- //        {
- //            arr[i][j] = ((i + 1) * (j + 1)) % 123;
- //        }
- //    }
- //}
+    // AoS* data;
+    // int n = 0;// Number of elements in data array
 
- //static void DoTeardown(const benchmark::State &state)
- //{
- //    for (int row = 0; row < COLS; row++)
- //    {
- //        free(arr[row]);
- //    }
+    // // Array initialization
 
- //    free(arr);
- //}
+    // for (int i = 0; i < n; i++)
+    // {
+    //     data[i].result = data[i].a + data[i].b * data[i].c;
+    // }
 
- //static void rows_cols(benchmark::State &state)
- //{
- //    for (auto _ : state)
- //    {
- //        int sum = 0;
- //        for (int i = 0; i < ROWS; i++)
- //        {
- //            for (int j = 0; j < COLS; j++)
- //            {
- //                sum += arr[i][j];
- //            }
- //        }
- //    }
- //}
+    // Structure of arrays
+    struct SoA
+    {
+        double *a;
+        double *b;
+        double *c;
+        double *d;
+        double *e;
+        double *f;
+        double *g;
+        double *h;
+        double *results;
+    };
 
- //static void cols_rows(benchmark::State &state)
- //{
- //    for (auto _ : state)
- //    {
- //        int sum = 0;
- //        for (int j = 0; j < COLS; j++)
- //        {
- //            for (int i = 0; i < ROWS; i++)
- //            {
- //                sum += arr[i][j];
- //            }
- //        }
- //    }
- //}
+    SoA data;
+    int n = 0; // Number of elements in each array of data
 
- //BENCHMARK(rows_cols)->Threads(1)->Threads(8)->Setup(DoSetup)->Teardown(DoTeardown);
- //BENCHMARK(cols_rows)->Threads(1)->Threads(8)->Setup(DoSetup)->Teardown(DoTeardown);
+    // Array initialization
 
- //BENCHMARK_MAIN();
+    for (int i = 0; i < n; i++)
+    {
+        data.results[i] = data.a[i] + data.b[i] * data.c[i];
+    }
+}
+
+// static void DoSetup(const benchmark::State &state)
+//{
+//     arr = (int **)calloc(ROWS, sizeof(int *));
+
+//    for (int row = 0; row < COLS; row++)
+//    {
+//        arr[row] = (int *)calloc(COLS, sizeof(int *));
+//    }
+
+//    for (int i = 0; i < ROWS; i++)
+//    {
+//        for (int j = 0; j < COLS; j++)
+//        {
+//            arr[i][j] = ((i + 1) * (j + 1)) % 123;
+//        }
+//    }
+//}
+
+// static void DoTeardown(const benchmark::State &state)
+//{
+//     for (int row = 0; row < COLS; row++)
+//     {
+//         free(arr[row]);
+//     }
+
+//    free(arr);
+//}
+
+// static void rows_cols(benchmark::State &state)
+//{
+//     for (auto _ : state)
+//     {
+//         int sum = 0;
+//         for (int i = 0; i < ROWS; i++)
+//         {
+//             for (int j = 0; j < COLS; j++)
+//             {
+//                 sum += arr[i][j];
+//             }
+//         }
+//     }
+// }
+
+// static void cols_rows(benchmark::State &state)
+//{
+//     for (auto _ : state)
+//     {
+//         int sum = 0;
+//         for (int j = 0; j < COLS; j++)
+//         {
+//             for (int i = 0; i < ROWS; i++)
+//             {
+//                 sum += arr[i][j];
+//             }
+//         }
+//     }
+// }
+
+// BENCHMARK(rows_cols)->Threads(1)->Threads(8)->Setup(DoSetup)->Teardown(DoTeardown);
+// BENCHMARK(cols_rows)->Threads(1)->Threads(8)->Setup(DoSetup)->Teardown(DoTeardown);
+
+// BENCHMARK_MAIN();
