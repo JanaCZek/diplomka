@@ -4,6 +4,9 @@ project(practice)
 
 set(BENCHMARK_ENABLE_GTEST_TESTS OFF)
 set(TRACY_ENABLE ON)
+#set(CMAKE_CXX_FLAGS "/O2")
+#set(CMAKE_CXX_FLAGS_DEBUG "/O2")
+#set(CMAKE_CXX_FLAGS_RELEASE "/O2")
 
 add_subdirectory(array-benchmark)
 add_subdirectory(matrix-benchmark)
