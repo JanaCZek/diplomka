@@ -36,6 +36,7 @@ void predictability();
 void true_sharing();
 void false_sharing();
 void false_sharing_fix();
+void write_read(double* src, double* dest, int n, char* id);
 
 double vector_add_simd()
 {
@@ -191,11 +192,22 @@ int main(void)
 	// array_add_parallel(A, B, results);
 	// printf("%f", results[0]);
 
-	true_sharing();
+	// true_sharing();
 
-	false_sharing();
+	// false_sharing();
 
-	false_sharing_fix();
+	// false_sharing_fix();
+
+	double *A = (double *)malloc(sizeof(double) * N);
+	srand(0);
+
+	for (int i = 0; i < N; i++)
+	{
+	    A[i] = rand() % 10;
+	}
+
+	write_read(&A[0], &A[1], N, "Write read fast");
+	write_read(&A[0], &A[0], N, "Write read slow");
 
 	// setup();
 
@@ -751,6 +763,20 @@ void false_sharing_fix() {
 		case 3:
 			++data.d;
 		}
+	}
+}
+
+void write_read(double* src, double* dest, int n, char* name) {
+	ZoneScopedS(5);
+	ZoneName(name, strlen(name));
+
+	int count = n;
+	int val = 0;
+
+	while (count) {
+		*dest = val;
+		val = (*src) + 1;
+		count--;
 	}
 }
 
