@@ -12,7 +12,7 @@
 
 #define N (1 << 25)
 
-int** arr;
+int **arr;
 
 void setup();
 void teardown();
@@ -22,33 +22,34 @@ int rows_cols_sum();
 int cols_rows_sum();
 void matrix_multiplications();
 void loop_dependence();
-void loop_unrolling_slow(double* array, int n, double result);
-void loop_unrolling_fast(double* array, int n, double result);
+void loop_unrolling_slow(double *array, int n, double result);
+void loop_unrolling_fast(double *array, int n, double result);
 void cache_associativity_limit(int step);
 void prefetching();
 void hot_cold();
 void aos_soa();
 void struct_size();
-double array_sum(double* array);
-void array_add(double* A, double* B, double* results);
-void array_add_parallel(double* A, double* B, double* results);
+double array_sum(double *array);
+void array_add(double *A, double *B, double *results);
+void array_add_parallel(double *A, double *B, double *results);
 void predictability();
 void true_sharing();
 void false_sharing();
 void false_sharing_fix();
-void write_read(double* src, double* dest, int n, char* id);
+void write_read(double *src, double *dest, int n, char *id);
+void exitence_based();
 
 double vector_add_simd()
 {
 	ZoneScopedS(5);
 
 	// Vector
-	double* array = (double*)_aligned_malloc(sizeof(double) * N, 16);
+	double *array = (double *)_aligned_malloc(sizeof(double) * N, 16);
 
 	// SSE specific step
 	int step = 128 / (sizeof(double) * 8);
 	int sumSize = step;
-	double* sum = (double*)malloc(sizeof(double) * sumSize);
+	double *sum = (double *)malloc(sizeof(double) * sumSize);
 
 	for (int i = 0; i < N; ++i)
 	{
@@ -61,7 +62,7 @@ double vector_add_simd()
 	}
 
 	__m128d sumVector = _mm_loadu_pd(sum);
-	__m128d* arrayVector = (__m128d*)array;
+	__m128d *arrayVector = (__m128d *)array;
 	int vecIterations = N / step;
 
 	for (int i = 0; i < vecIterations; i++)
@@ -89,7 +90,7 @@ double vector_add()
 	ZoneScopedS(5);
 
 	// Scalar
-	double* array = (double*)malloc(sizeof(double) * N);
+	double *array = (double *)malloc(sizeof(double) * N);
 	double sum = 0.0;
 
 	// Array initialization
@@ -107,13 +108,13 @@ double vector_add()
 	return sum;
 }
 
-int8_t* add_vectors()
+int8_t *add_vectors()
 {
 	ZoneScopedS(5);
 
-	int8_t* A = (int8_t*)_aligned_malloc(sizeof(int8_t) * N, 16);
-	int8_t* B = (int8_t*)_aligned_malloc(sizeof(int8_t) * N, 16);
-	int8_t* C = (int8_t*)_aligned_malloc(sizeof(int8_t) * N, 16);
+	int8_t *A = (int8_t *)_aligned_malloc(sizeof(int8_t) * N, 16);
+	int8_t *B = (int8_t *)_aligned_malloc(sizeof(int8_t) * N, 16);
+	int8_t *C = (int8_t *)_aligned_malloc(sizeof(int8_t) * N, 16);
 	int step = 128 / (sizeof(int8_t) * 8);
 
 	for (int i = 0; i < N; ++i)
@@ -122,9 +123,9 @@ int8_t* add_vectors()
 		B[i] = 1;
 	}
 
-	__m128i* AVector = (__m128i*)A;
-	__m128i* BVector = (__m128i*)B;
-	__m128i* CVector = (__m128i*)C;
+	__m128i *AVector = (__m128i *)A;
+	__m128i *BVector = (__m128i *)B;
+	__m128i *CVector = (__m128i *)C;
 
 	for (int i = 0; i < step; i++)
 	{
@@ -134,13 +135,13 @@ int8_t* add_vectors()
 	return C;
 }
 
-int8_t* add_scalars()
+int8_t *add_scalars()
 {
 	ZoneScopedS(5);
 
-	int8_t* A = (int8_t*)malloc(sizeof(int8_t) * N);
-	int8_t* B = (int8_t*)malloc(sizeof(int8_t) * N);
-	int8_t* C = (int8_t*)malloc(sizeof(int8_t) * N);
+	int8_t *A = (int8_t *)malloc(sizeof(int8_t) * N);
+	int8_t *B = (int8_t *)malloc(sizeof(int8_t) * N);
+	int8_t *C = (int8_t *)malloc(sizeof(int8_t) * N);
 
 	for (int i = 0; i < N; ++i)
 	{
@@ -203,7 +204,7 @@ int main(void)
 
 	for (int i = 0; i < N; i++)
 	{
-	    A[i] = rand() % 10;
+		A[i] = rand() % 10;
 	}
 
 	write_read(&A[0], &A[1], N, "Write read fast");
@@ -227,13 +228,13 @@ int main(void)
 void setup()
 {
 	ZoneScopedS(5);
-	arr = (int**)calloc(ROWS, sizeof(int*));
-	TracyAlloc(arr, sizeof(int*));
+	arr = (int **)calloc(ROWS, sizeof(int *));
+	TracyAlloc(arr, sizeof(int *));
 
 	for (int row = 0; row < COLS; row++)
 	{
-		arr[row] = (int*)calloc(COLS, sizeof(int*));
-		TracyAlloc(arr[row], sizeof(int*));
+		arr[row] = (int *)calloc(COLS, sizeof(int *));
+		TracyAlloc(arr[row], sizeof(int *));
 	}
 
 	for (int i = 0; i < ROWS; i++)
@@ -287,9 +288,9 @@ int cols_rows_sum()
 void matrix_multiplications()
 {
 
-	double** A;
-	double** B;
-	double** C;
+	double **A;
+	double **B;
+	double **C;
 
 	double sum = 0.0;
 	int n = 10;
@@ -382,10 +383,10 @@ void matrix_multiplications()
 
 void loop_dependence()
 {
-	double* A;
-	double* B;
-	double* C;
-	double* D;
+	double *A;
+	double *B;
+	double *C;
+	double *D;
 
 	int n = 10; // A number big enough to show the impact
 
@@ -406,7 +407,7 @@ void loop_dependence()
 	B[n] = C[n - 1] + D[n - 1];
 }
 
-void loop_unrolling_slow(double* array, int n, double* result)
+void loop_unrolling_slow(double *array, int n, double *result)
 {
 
 	for (int i = 0; i < n; i++)
@@ -415,7 +416,7 @@ void loop_unrolling_slow(double* array, int n, double* result)
 	}
 }
 
-void loop_unrolling_fast(double* array, int n, double* result)
+void loop_unrolling_fast(double *array, int n, double *result)
 {
 
 	int i = 0;
@@ -442,7 +443,7 @@ void loop_unrolling_fast(double* array, int n, double* result)
 void cache_associativity_limit(int step)
 {
 
-	double* array;
+	double *array;
 	int n = 0; // A number to ensure the same number of memory accesses for every step
 
 	// Array initialization
@@ -458,7 +459,7 @@ void cache_associativity_limit(int step)
 void prefetching()
 {
 
-	double* array;
+	double *array;
 	int n = 0; // A number to ensure the same number of memory accesses for every step
 
 	// Array initialization
@@ -534,11 +535,11 @@ void hot_cold()
 
 	struct Data
 	{
-		DataHot* hot;
-		DataCold* cold;
+		DataHot *hot;
+		DataCold *cold;
 	};
 
-	Data* data;
+	Data *data;
 	int n = 0; // Number of elements in data array
 
 	// Array initialization
@@ -570,15 +571,15 @@ void aos_soa()
 	// Structure of arrays
 	struct SoA
 	{
-		double* a;
-		double* b;
-		double* c;
-		double* d;
-		double* e;
-		double* f;
-		double* g;
-		double* h;
-		double* results;
+		double *a;
+		double *b;
+		double *c;
+		double *d;
+		double *e;
+		double *f;
+		double *g;
+		double *h;
+		double *results;
 	};
 
 	SoA data;
@@ -618,7 +619,8 @@ void struct_size()
 	printf("Data: %d, Smaller: %d\n", sizeof(Data), sizeof(DataOrdered));
 }
 
-double array_sum(double* array) {
+double array_sum(double *array)
+{
 
 	ZoneScopedS(5);
 
@@ -633,7 +635,8 @@ double array_sum(double* array) {
 	return sum;
 }
 
-void array_add(double* A, double* B, double* results) {
+void array_add(double *A, double *B, double *results)
+{
 
 	ZoneScopedS(5);
 
@@ -643,7 +646,8 @@ void array_add(double* A, double* B, double* results) {
 	}
 }
 
-void array_add_parallel(double* A, double* B, double* results) {
+void array_add_parallel(double *A, double *B, double *results)
+{
 
 	ZoneScopedS(5);
 
@@ -654,9 +658,10 @@ void array_add_parallel(double* A, double* B, double* results) {
 	}
 }
 
-void predictability() {
+void predictability()
+{
 
-	double* array = (double*)malloc(sizeof(double) * N);
+	double *array = (double *)malloc(sizeof(double) * N);
 	srand(0);
 
 	// Initialize
@@ -668,7 +673,8 @@ void predictability() {
 	// Process predictable
 	for (int i = 0; i < N; ++i)
 	{
-		if (array[i] > 20.0) {
+		if (array[i] > 20.0)
+		{
 			printf("%f", array[i]);
 		}
 	}
@@ -676,7 +682,8 @@ void predictability() {
 	// Process predictable
 	for (int i = 0; i < N; ++i)
 	{
-		if (array[i] >= 0.0 && array[i] < 10.0) {
+		if (array[i] >= 0.0 && array[i] < 10.0)
+		{
 			printf("%f", array[i]);
 		}
 	}
@@ -684,7 +691,8 @@ void predictability() {
 	// Process not so predictable
 	for (int i = 0; i < N; ++i)
 	{
-		if (array[i] > 5.0) {
+		if (array[i] > 5.0)
+		{
 			printf("%f", array[i]);
 		}
 	}
@@ -692,11 +700,12 @@ void predictability() {
 	free(array);
 }
 
-void true_sharing() {
+void true_sharing()
+{
 	// True sharing
 	int shared = 0;
 
-	#pragma omp parallel num_threads(4)
+#pragma omp parallel num_threads(4)
 	{
 		// Race!!!
 		shared++;
@@ -705,9 +714,11 @@ void true_sharing() {
 	printf("%d\n", shared);
 }
 
-void false_sharing() {
+void false_sharing()
+{
 	// False sharing
-	struct Data {
+	struct Data
+	{
 		int32_t a, b, c, d;
 	};
 
@@ -735,9 +746,11 @@ void false_sharing() {
 
 #define ALIGNMENT (64)
 
-void false_sharing_fix() {
+void false_sharing_fix()
+{
 	// False sharing fix
-	struct Data {
+	struct Data
+	{
 		alignas(ALIGNMENT) int32_t a;
 		alignas(ALIGNMENT) int32_t b;
 		alignas(ALIGNMENT) int32_t c;
@@ -766,17 +779,51 @@ void false_sharing_fix() {
 	}
 }
 
-void write_read(double* src, double* dest, int n, char* name) {
+void write_read(double *src, double *dest, int n, char *name)
+{
 	ZoneScopedS(5);
 	ZoneName(name, strlen(name));
 
 	int count = n;
 	int val = 0;
 
-	while (count) {
+	while (count)
+	{
 		*dest = val;
 		val = (*src) + 1;
 		count--;
+	}
+}
+
+void exitence_based()
+{
+	double *array;
+
+	// Array initialization
+
+	for (int i = 0; i < N; ++i)
+	{
+		if (array[i] >= 0.0)
+		{
+			// Positive logic
+		}
+		else
+		{
+			// Negative logic
+		}
+	}
+
+	double *positive;
+	double *negative;
+
+	for (int i = 0; i < N; ++i)
+	{
+		// Positive logic on positive[i]
+	}
+
+	for (int i = 0; i < N; ++i)
+	{
+		// Negative logic on negative[i]
 	}
 }
 
