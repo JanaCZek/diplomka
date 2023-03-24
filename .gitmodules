@@ -1,3 +1,9 @@
 [submodule "Practice/libs/tracy"]
 	path = Practice/libs/tracy
 	url = https://github.com/wolfpld/tracy.git
+[submodule "Microbenchmarks/libs/tracy"]
+	path = Microbenchmarks/libs/tracy
+	url = https://github.com/wolfpld/tracy.git
+[submodule "Microbenchmarks/libs/benchmark"]
+	path = Microbenchmarks/libs/benchmark
+	url = https://github.com/google/benchmark.git
