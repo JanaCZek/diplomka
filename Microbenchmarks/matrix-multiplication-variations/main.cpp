@@ -1,5 +1,4 @@
 #include <benchmark/benchmark.h>
-#include <tracy/Tracy.hpp>
 
 double **A;
 double **B;
@@ -190,11 +189,14 @@ static void ikj(benchmark::State &state)
     }
 }
 
-BENCHMARK(ijk)->Setup(DoSetup)->Arg(50)->Arg(100);
-BENCHMARK(jik)->Arg(50)->Arg(100);
-BENCHMARK(jki)->Arg(50)->Arg(100);
-BENCHMARK(kji)->Arg(50)->Arg(100);
-BENCHMARK(kij)->Arg(50)->Arg(100);
-BENCHMARK(ikj)->Teardown(DoTeardown)->Arg(50)->Arg(100);
+#define N1 50
+#define N2 100
+
+BENCHMARK(ijk)->Setup(DoSetup)->Arg(N1)->Arg(N2);
+BENCHMARK(jik)->Arg(N1)->Arg(N2);
+BENCHMARK(jki)->Arg(N1)->Arg(N2);
+BENCHMARK(kji)->Arg(N1)->Arg(N2);
+BENCHMARK(kij)->Arg(N1)->Arg(N2);
+BENCHMARK(ikj)->Teardown(DoTeardown)->Arg(N1)->Arg(N2);
 
 BENCHMARK_MAIN();
