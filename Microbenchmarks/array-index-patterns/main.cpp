@@ -3,7 +3,7 @@
 #define ACCESS_COUNT (10000)
 
 double *array;
-double results[5] = {0.0, 0.0, 0.0, 0.0, 0.0};
+double results[4] = {0.0, 0.0, 0.0, 0.0};
 
 void setup();
 void teardown();
@@ -11,7 +11,6 @@ double sequential(int n);
 double strided(int step, int n);
 double random(int n);
 double pattern(int n);
-double pattern_prefetching(int n);
 
 static void DoSetup(const benchmark::State &state)
 {
@@ -40,6 +39,7 @@ static void sequential_benchmark(benchmark::State &state)
 
         double sum = sequential(n);
 
+        // Do something with the variable so it doesn't get optimized away
         results[0] = sum;
     }
 }
@@ -53,6 +53,7 @@ static void strided_benchmark(benchmark::State &state)
 
         double sum = strided(step, n);
 
+        // Do something with the variable so it doesn't get optimized away
         results[1] = sum;
     }
 }
@@ -66,6 +67,7 @@ static void random_benchmark(benchmark::State &state)
 
         double sum = random(n);
 
+        // Do something with the variable so it doesn't get optimized away
         results[2] = sum;
     }
 }
@@ -79,20 +81,8 @@ static void pattern_benchmark(benchmark::State &state)
 
         double sum = pattern(n);
 
+        // Do something with the variable so it doesn't get optimized away
         results[3] = sum;
-    }
-}
-
-static void pattern_prefetching_benchmark(benchmark::State &state)
-{
-    for (auto _ : state)
-    {
-        int step = state.range(0);
-        int n = ACCESS_COUNT * step;
-
-        double sum = pattern_prefetching(n);
-
-        results[4] = sum;
     }
 }
 
@@ -135,8 +125,8 @@ double random(int n)
     return sum;
 }
 
-double pattern(int n) {
-
+double pattern(int n)
+{
     double sum = 0.0;
 
     for (int i = 0; i < n; i++)
@@ -148,23 +138,12 @@ double pattern(int n) {
     return sum;
 }
 
-double pattern_prefetching(int n) {
-    double sum = 0.0;
+#define START (1 << 1)
+#define N (1 << 10)
 
-    for (int i = 0; i < n; i++)
-    {
-        __builtin_prefetch(&array[(2 * i + 5) % n]);
-        int index = (2 * i + 5) % n;
-        sum += array[index];
-    }
-
-    return sum;
-}
-
-// BENCHMARK(random_benchmark)->Setup(DoSetup)->Teardown(DoTeardown)->Arg(1);
-// BENCHMARK(sequential_benchmark)->Setup(DoSetup)->Teardown(DoTeardown)->Arg(1);
+BENCHMARK(sequential_benchmark)->Setup(DoSetup)->Teardown(DoTeardown)->Arg(1);
 BENCHMARK(pattern_benchmark)->Setup(DoSetup)->Teardown(DoTeardown)->Arg(1);
-BENCHMARK(pattern_prefetching_benchmark)->Setup(DoSetup)->Teardown(DoTeardown)->Arg(1);
-// BENCHMARK(strided_benchmark)->Setup(DoSetup)->Teardown(DoTeardown)->RangeMultiplier(2)->Range(1 << 1, 1 << 10);
+BENCHMARK(strided_benchmark)->Setup(DoSetup)->Teardown(DoTeardown)->RangeMultiplier(2)->Range(START, N);
+BENCHMARK(random_benchmark)->Setup(DoSetup)->Teardown(DoTeardown)->Arg(1);
 
 BENCHMARK_MAIN();

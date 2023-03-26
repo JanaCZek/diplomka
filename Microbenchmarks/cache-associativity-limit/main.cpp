@@ -36,6 +36,7 @@ static void cache_associativity_limit_benchmark(benchmark::State &state)
 
         double sum = cache_associativity_limit(step, n);
 
+        // Do something with the variable so it doesn't get optimized away
         result = sum;
     }
 }
