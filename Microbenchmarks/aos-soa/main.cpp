@@ -120,9 +120,9 @@ void soa(int n)
 }
 
 #define START (1 << 10)
-#define N (1 << 20)
+#define END (1 << 20)
 
-BENCHMARK(aos_benchmark)->Setup(DoSetup)->Teardown(DoTeardown)->RangeMultiplier(2)->Range(START, N);
-BENCHMARK(soa_benchmark)->Setup(DoSetup)->Teardown(DoTeardown)->RangeMultiplier(2)->Range(START, N);
+BENCHMARK(aos_benchmark)->Setup(DoSetup)->Teardown(DoTeardown)->RangeMultiplier(2)->Range(START, END);
+BENCHMARK(soa_benchmark)->Setup(DoSetup)->Teardown(DoTeardown)->RangeMultiplier(2)->Range(START, END);
 
 BENCHMARK_MAIN();

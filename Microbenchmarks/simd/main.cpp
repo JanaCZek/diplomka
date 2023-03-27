@@ -93,9 +93,9 @@ double array_sum_simd(int n)
 }
 
 #define START (1 << 10)
-#define N (1 << 20)
+#define END (1 << 20)
 
-BENCHMARK(array_sum_benchmark)->Setup(DoSetup)->Teardown(DoTeardown)->RangeMultiplier(2)->Range(START, N);
-BENCHMARK(array_sum_simd_benchmark)->Setup(DoSetup)->Teardown(DoTeardown)->RangeMultiplier(2)->Range(START, N);
+BENCHMARK(array_sum_benchmark)->Setup(DoSetup)->Teardown(DoTeardown)->RangeMultiplier(2)->Range(START, END);
+BENCHMARK(array_sum_simd_benchmark)->Setup(DoSetup)->Teardown(DoTeardown)->RangeMultiplier(2)->Range(START, END);
 
 BENCHMARK_MAIN();

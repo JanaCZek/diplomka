@@ -139,11 +139,11 @@ double pattern(int n)
 }
 
 #define START (1 << 1)
-#define N (1 << 10)
+#define END (1 << 10)
 
 BENCHMARK(sequential_benchmark)->Setup(DoSetup)->Teardown(DoTeardown)->Arg(1);
 BENCHMARK(pattern_benchmark)->Setup(DoSetup)->Teardown(DoTeardown)->Arg(1);
-BENCHMARK(strided_benchmark)->Setup(DoSetup)->Teardown(DoTeardown)->RangeMultiplier(2)->Range(START, N);
+BENCHMARK(strided_benchmark)->Setup(DoSetup)->Teardown(DoTeardown)->RangeMultiplier(2)->Range(START, END);
 BENCHMARK(random_benchmark)->Setup(DoSetup)->Teardown(DoTeardown)->Arg(1);
 
 BENCHMARK_MAIN();

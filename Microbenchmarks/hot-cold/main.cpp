@@ -114,9 +114,9 @@ void separated(int n)
 }
 
 #define START (1 << 10)
-#define N (1 << 20)
+#define END (1 << 20)
 
-BENCHMARK(together_benchmark)->Setup(DoSetup)->Teardown(DoTeardown)->RangeMultiplier(2)->Range(START, N);
-BENCHMARK(separated_benchmark)->Setup(DoSetup)->Teardown(DoTeardown)->RangeMultiplier(2)->Range(START, N);
+BENCHMARK(together_benchmark)->Setup(DoSetup)->Teardown(DoTeardown)->RangeMultiplier(2)->Range(START, END);
+BENCHMARK(separated_benchmark)->Setup(DoSetup)->Teardown(DoTeardown)->RangeMultiplier(2)->Range(START, END);
 
 BENCHMARK_MAIN();

@@ -66,9 +66,9 @@ static void without_dependence(benchmark::State &state)
 }
 
 #define START (1 << 1)
-#define N (1 << 20)
+#define END (1 << 20)
 
-BENCHMARK(with_dependence)->Setup(DoSetup)->Teardown(DoTeardown)->RangeMultiplier(2)->Range(START, N);
-BENCHMARK(without_dependence)->Setup(DoSetup)->Teardown(DoTeardown)->RangeMultiplier(2)->Range(START, N);
+BENCHMARK(with_dependence)->Setup(DoSetup)->Teardown(DoTeardown)->RangeMultiplier(2)->Range(START, END);
+BENCHMARK(without_dependence)->Setup(DoSetup)->Teardown(DoTeardown)->RangeMultiplier(2)->Range(START, END);
 
 BENCHMARK_MAIN();

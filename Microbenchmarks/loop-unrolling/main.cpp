@@ -117,10 +117,11 @@ void array_sum_unrolled_4(double *array, int n, double *result)
     *result = accumulator;
 }
 
-#define N (1 << 15)
+#define START (1 << 4)
+#define END (1 << 15)
 
-BENCHMARK(array_sum_benchmark)->Setup(DoSetup)->Teardown(DoTeardown)->RangeMultiplier(2)->Range(4, N);
-BENCHMARK(array_sum_unrolled_2_benchmark)->Setup(DoSetup)->Teardown(DoTeardown)->RangeMultiplier(2)->Range(4, N);
-BENCHMARK(array_sum_unrolled_4_benchmark)->Setup(DoSetup)->Teardown(DoTeardown)->RangeMultiplier(2)->Range(4, N);
+BENCHMARK(array_sum_benchmark)->Setup(DoSetup)->Teardown(DoTeardown)->RangeMultiplier(2)->Range(START, END);
+BENCHMARK(array_sum_unrolled_2_benchmark)->Setup(DoSetup)->Teardown(DoTeardown)->RangeMultiplier(2)->Range(START, END);
+BENCHMARK(array_sum_unrolled_4_benchmark)->Setup(DoSetup)->Teardown(DoTeardown)->RangeMultiplier(2)->Range(START, END);
 
 BENCHMARK_MAIN();
