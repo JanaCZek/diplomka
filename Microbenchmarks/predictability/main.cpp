@@ -5,8 +5,8 @@
 double *array;
 double results[3] = {0.0, 0.0, 0.0};
 
-void setup();
-void teardown();
+
+
 double never(const double *array, int n);
 double always(const double *array, int n);
 double not_so_predictable(const double *array, int n);

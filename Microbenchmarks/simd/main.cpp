@@ -4,8 +4,8 @@
 double *array;
 double results[2] = {0.0, 0.0};
 
-void setup();
-void teardown();
+
+
 double array_sum(int n);
 double array_sum_simd(int n);
 

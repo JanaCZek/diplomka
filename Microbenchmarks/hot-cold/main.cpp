@@ -26,8 +26,6 @@ struct DataHotCold
 Data *data;
 DataHotCold dataHotCold;
 
-void setup();
-void teardown();
 void together(int n);
 void separated(int n);
 

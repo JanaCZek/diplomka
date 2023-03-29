@@ -1,56 +1,59 @@
 #include <benchmark/benchmark.h>
 #include <tracy/Tracy.hpp>
 
-#define ROWS 5000
-#define COLS 5000
+#define N (1 << 11)
+#define ROWS N
+#define COLS N
 
-int **arr;
+double **array;
+double results[2] = {0.0, 0.0};
 
-void setup();
-void teardown();
 void rows_cols();
 void cols_rows();
 
 static void DoSetup(const benchmark::State &state)
 {
-    arr = (int **)calloc(ROWS, sizeof(int *));
+    array = (double **)calloc(ROWS, sizeof(double *));
 
-   for (int row = 0; row < COLS; row++)
-   {
-       arr[row] = (int *)calloc(COLS, sizeof(int *));
-   }
+    for (int row = 0; row < COLS; row++)
+    {
+        array[row] = (double *)calloc(COLS, sizeof(double *));
+    }
 
-   for (int i = 0; i < ROWS; i++)
-   {
-       for (int j = 0; j < COLS; j++)
-       {
-           arr[i][j] = ((i + 1) * (j + 1)) % 100;
-       }
-   }
+    for (int i = 0; i < ROWS; i++)
+    {
+        for (int j = 0; j < COLS; j++)
+        {
+            array[i][j] = ((i + 1) * (j + 1)) % 100;
+        }
+    }
 }
 
 static void DoTeardown(const benchmark::State &state)
 {
     for (int row = 0; row < COLS; row++)
     {
-        free(arr[row]);
+        free(array[row]);
     }
 
-   free(arr);
+    free(array);
 }
 
 static void rows_cols(benchmark::State &state)
 {
     for (auto _ : state)
     {
-        int sum = 0;
+        double sum = 0;
         for (int i = 0; i < ROWS; i++)
         {
             for (int j = 0; j < COLS; j++)
             {
-                sum += arr[i][j];
+                sum += array[i][j];
             }
         }
+
+        // Do something with the variable so it doesn't get optimized away
+        results[0] = sum;
     }
 }
 
@@ -58,14 +61,17 @@ static void cols_rows(benchmark::State &state)
 {
     for (auto _ : state)
     {
-        int sum = 0;
+        double sum = 0;
         for (int j = 0; j < COLS; j++)
         {
             for (int i = 0; i < ROWS; i++)
             {
-                sum += arr[i][j];
+                sum += array[i][j];
             }
         }
+
+        // Do something with the variable so it doesn't get optimized away
+        results[1] = sum;
     }
 }
 

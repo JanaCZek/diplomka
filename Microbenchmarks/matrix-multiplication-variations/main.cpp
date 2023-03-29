@@ -4,8 +4,8 @@ double **A;
 double **B;
 double **C;
 
-void setup();
-void teardown();
+
+
 void ijk();
 void jik();
 void jki();

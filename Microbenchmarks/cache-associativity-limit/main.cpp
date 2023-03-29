@@ -5,8 +5,8 @@
 double *array;
 double result;
 
-void setup();
-void teardown();
+
+
 double cache_associativity_limit(int step, int n);
 
 static void DoSetup(const benchmark::State &state)

@@ -22,8 +22,8 @@ struct DataOrdered
 Data *data;
 DataOrdered* dataOrdered;
 
-void setup();
-void teardown();
+
+
 
 static void DoSetup(const benchmark::State &state)
 {

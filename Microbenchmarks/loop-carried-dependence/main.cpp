@@ -5,8 +5,6 @@ double *B;
 double *C;
 double *D;
 
-void setup();
-void teardown();
 void with_dependence();
 void without_dependence();
 

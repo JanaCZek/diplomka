@@ -15,8 +15,8 @@ struct SoA
 AoS *dataAoS;
 SoA dataSoA;
 
-void setup();
-void teardown();
+
+
 void aos(int n);
 void soa(int n);
 

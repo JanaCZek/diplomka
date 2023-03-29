@@ -3,8 +3,8 @@
 double *array;
 double results[3] = { 0.0, 0.0, 0.0 };
 
-void setup();
-void teardown();
+
+
 void array_sum(double *array, int n, double *result);
 void array_sum_unrolled_2(double *array, int n, double *result);
 void array_sum_unrolled_4(double *array, int n, double *result);

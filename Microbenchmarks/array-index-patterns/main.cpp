@@ -5,8 +5,8 @@
 double *array;
 double results[4] = {0.0, 0.0, 0.0, 0.0};
 
-void setup();
-void teardown();
+
+
 double sequential(int n);
 double strided(int step, int n);
 double random(int n);
