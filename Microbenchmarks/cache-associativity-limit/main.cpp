@@ -5,8 +5,6 @@
 double *array;
 double result;
 
-
-
 double cache_associativity_limit(int step, int n);
 
 static void DoSetup(const benchmark::State &state)
@@ -56,3 +54,38 @@ double cache_associativity_limit(int step, int n)
 BENCHMARK(cache_associativity_limit_benchmark)->Setup(DoSetup)->Teardown(DoTeardown)->Arg(30)->Arg(32)->Arg(60)->Arg(64)->Arg(120)->Arg(128)->Arg(250)->Arg(256)->Arg(510)->Arg(512);
 
 BENCHMARK_MAIN();
+
+// int main()
+// {
+//     int step = 30;
+//     int n = ACCESS_COUNT * step;
+
+//     array = (double *)calloc(n, sizeof(double));
+
+//     for (int i = 0; i < n; i++)
+//     {
+//         array[i] = (i + 1) % 100;
+//     }
+
+//     double sum = cache_associativity_limit(step, n);
+//     step = 32;
+//     sum = cache_associativity_limit(step, n);
+//     step = 60;
+//     sum = cache_associativity_limit(step, n);
+//     step = 64;
+//     sum = cache_associativity_limit(step, n);
+//     step = 120;
+//     sum = cache_associativity_limit(step, n);
+//     step = 128;
+//     sum = cache_associativity_limit(step, n);
+//     step = 250;
+//     sum = cache_associativity_limit(step, n);
+//     step = 256;
+//     sum = cache_associativity_limit(step, n);
+//     step = 510;
+//     sum = cache_associativity_limit(step, n);
+//     step = 512;
+//     sum = cache_associativity_limit(step, n);
+
+//     free(array);
+// }

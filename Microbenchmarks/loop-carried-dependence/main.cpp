@@ -22,13 +22,14 @@ static void DoSetup(const benchmark::State &state)
         A[i] = (i + 1) % 100;
         B[i] = (i + 1) % 100;
         C[i] = (i + 1) % 100;
+        D[i] = (i + 1) % 100;
     }
 }
 
 static void DoTeardown(const benchmark::State &state)
 {
     free(A);
-    free(B);
+    // free(B);
     free(C);
     free(D);
 }

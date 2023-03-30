@@ -147,3 +147,22 @@ BENCHMARK(strided_benchmark)->Setup(DoSetup)->Teardown(DoTeardown)->RangeMultipl
 BENCHMARK(random_benchmark)->Setup(DoSetup)->Teardown(DoTeardown)->Arg(1);
 
 BENCHMARK_MAIN();
+
+// int main() {
+//     int step = (1 << 1);
+//     int n = ACCESS_COUNT * step;
+
+//     array = (double *)calloc(n, sizeof(double));
+
+//     for (int i = 0; i < n; i++)
+//     {
+//         array[i] = (i + 1) % 100;
+//     }
+
+//     double result = sequential(n);
+//     result = pattern(n);
+//     result = strided(step, n);
+//     result = random(n);
+
+//     free(array);
+// }
