@@ -1,7 +1,7 @@
 #include <stdint.h>
 #include <mutex>
 #include <omp.h>
-#include <benchmark/benchmark.h>
+#include <tracy/Tracy.hpp>
 
 std::atomic<int32_t> shared;
 std::mutex mutex;
@@ -19,63 +19,8 @@ void true_sharing(int n);
 void false_sharing(int n);
 void false_sharing_fix(int n);
 
-static void DoSetup(const benchmark::State &state)
-{
-    shared = 0;
-
-    dataA = 0;
-    dataB = 0;
-    dataC = 0;
-    dataD = 0;
-
-    dataAlignedA = 0;
-    dataAlignedB = 0;
-    dataAlignedC = 0;
-    dataAlignedD = 0;
-}
-
-static void DoTeardown(const benchmark::State &state)
-{
-}
-
-static void true_sharing_benchmark(benchmark::State &state)
-{
-    for (auto _ : state)
-    {
-        int n = state.range(0);
-
-        true_sharing(n);
-    }
-}
-
-static void false_sharing_benchmark(benchmark::State &state)
-{
-    for (auto _ : state)
-    {
-        int n = state.range(0);
-
-        false_sharing(n);
-    }
-}
-
-static void false_sharing_fix_benchmark(benchmark::State &state)
-{
-    for (auto _ : state)
-    {
-        int n = state.range(0);
-
-        false_sharing_fix(n);
-    }
-}
-
 void true_sharing(int n)
 {
-    char functionName[32] = {'\0'};
-    sprintf(functionName, "True sharing, size: %d", n);
-
-    ZoneScopedS(5);
-    ZoneName(functionName, strlen(functionName));
-
 #pragma omp parallel num_threads(4)
     for (int i = 0; i < n; i++)
     {
@@ -86,12 +31,6 @@ void true_sharing(int n)
 }
 void false_sharing(int n)
 {
-    char functionName[32] = {'\0'};
-    sprintf(functionName, "False sharing, size: %d", n);
-
-    ZoneScopedS(5);
-    ZoneName(functionName, strlen(functionName));
-
 #pragma omp parallel num_threads(4)
     {
         int thread_num = omp_get_thread_num();
@@ -126,12 +65,6 @@ void false_sharing(int n)
 }
 void false_sharing_fix(int n)
 {
-    char functionName[32] = {'\0'};
-    sprintf(functionName, "False sharing fix, size: %d", n);
-
-    ZoneScopedS(5);
-    ZoneName(functionName, strlen(functionName));
-
 #pragma omp parallel num_threads(4)
     {
         int thread_num = omp_get_thread_num();
@@ -165,10 +98,59 @@ void false_sharing_fix(int n)
     }
 }
 
-#define N (1 << 20)
+int main()
+{
+    ZoneScoped;
 
-BENCHMARK(true_sharing_benchmark)->Setup(DoSetup)->Teardown(DoTeardown)->Arg(N);
-BENCHMARK(false_sharing_benchmark)->Setup(DoSetup)->Teardown(DoTeardown)->Arg(N);
-BENCHMARK(false_sharing_fix_benchmark)->Setup(DoSetup)->Teardown(DoTeardown)->Arg(N);
+    const int sizes[] = {(1 << 10), (1 << 11), (1 << 12), (1 << 13), (1 << 14), (1 << 15), (1 << 16), (1 << 17), (1 << 18), (1 << 19), (1 << 20)};
+    int sizesCount = sizeof(sizes) / sizeof(const int);
 
-BENCHMARK_MAIN();
+    for (int sizeIndex = 0; sizeIndex < sizesCount; sizeIndex++)
+    {
+        int n = sizes[sizeIndex];
+
+        char functionName[32] = {'\0'};
+        sprintf(functionName, "Size: %d", n);
+
+        ZoneScopedN("Size");
+        ZoneName(functionName, strlen(functionName));
+
+        dataA = 0;
+        dataB = 0;
+        dataC = 0;
+        dataD = 0;
+
+        dataAlignedA = 0;
+        dataAlignedB = 0;
+        dataAlignedC = 0;
+        dataAlignedD = 0;
+
+        {
+            char functionName[32] = {'\0'};
+            sprintf(functionName, "False sharing, size: %d", n);
+
+            ZoneScopedN("False sharing");
+            ZoneName(functionName, strlen(functionName));
+
+            for (int repeat = 0; repeat < 997; repeat++)
+            {
+                false_sharing(n);
+            }
+        }
+
+        {
+            char functionName[32] = {'\0'};
+            sprintf(functionName, "False sharing fix, size: %d", n);
+
+            ZoneScopedN("False sharing fix");
+            ZoneName(functionName, strlen(functionName));
+
+            for (int repeat = 0; repeat < 997; repeat++)
+            {
+                false_sharing_fix(n);
+            }
+        }
+        false_sharing(n);
+        false_sharing_fix(n);
+    }
+}

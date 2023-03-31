@@ -3,9 +3,8 @@
 #define ACCESS_COUNT (10000)
 
 double *array;
+double *arrayStrided;
 double results[4] = {0.0, 0.0, 0.0, 0.0};
-
-
 
 double sequential(int n);
 double strided(int step, int n);
@@ -14,14 +13,22 @@ double pattern(int n);
 
 static void DoSetup(const benchmark::State &state)
 {
-    int step = state.range(0);
-    int n = ACCESS_COUNT * step;
+    int n = ACCESS_COUNT;
 
-    array = (double *)calloc(n, sizeof(double));
+    int step = state.range(0);
+    int stridedN = ACCESS_COUNT * step;
+
+    array = (double *)calloc(stridedN, sizeof(double));
+    arrayStrided = (double *)calloc(stridedN, sizeof(double));
 
     for (int i = 0; i < n; i++)
     {
         array[i] = (i + 1) % 100;
+    }
+
+    for (int i = 0; i < stridedN; i++)
+    {
+        arrayStrided[i] = (i + 1) % 100;
     }
 }
 
@@ -35,7 +42,7 @@ static void sequential_benchmark(benchmark::State &state)
     for (auto _ : state)
     {
         int step = state.range(0);
-        int n = ACCESS_COUNT * step;
+        int n = ACCESS_COUNT;
 
         double sum = sequential(n);
 
@@ -63,7 +70,7 @@ static void random_benchmark(benchmark::State &state)
     for (auto _ : state)
     {
         int step = state.range(0);
-        int n = ACCESS_COUNT * step;
+        int n = ACCESS_COUNT;
 
         double sum = random(n);
 
@@ -77,7 +84,7 @@ static void pattern_benchmark(benchmark::State &state)
     for (auto _ : state)
     {
         int step = state.range(0);
-        int n = ACCESS_COUNT * step;
+        int n = ACCESS_COUNT;
 
         double sum = pattern(n);
 
@@ -104,7 +111,7 @@ double strided(int step, int n)
 
     for (int i = 0; i < n; i += step)
     {
-        sum += array[i];
+        sum += arrayStrided[i];
     }
 
     return sum;
@@ -147,22 +154,3 @@ BENCHMARK(strided_benchmark)->Setup(DoSetup)->Teardown(DoTeardown)->RangeMultipl
 BENCHMARK(random_benchmark)->Setup(DoSetup)->Teardown(DoTeardown)->Arg(1);
 
 BENCHMARK_MAIN();
-
-// int main() {
-//     int step = (1 << 1);
-//     int n = ACCESS_COUNT * step;
-
-//     array = (double *)calloc(n, sizeof(double));
-
-//     for (int i = 0; i < n; i++)
-//     {
-//         array[i] = (i + 1) % 100;
-//     }
-
-//     double result = sequential(n);
-//     result = pattern(n);
-//     result = strided(step, n);
-//     result = random(n);
-
-//     free(array);
-// }

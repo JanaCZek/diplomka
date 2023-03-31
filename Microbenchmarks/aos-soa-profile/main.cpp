@@ -1,4 +1,4 @@
-#include <benchmark/benchmark.h>
+#include <tracy/Tracy.hpp>
 
 double results[2] = {0.0, 0.0};
 
@@ -18,9 +18,27 @@ SoA dataSoA;
 void aos(int n);
 void soa(int n);
 
-static void DoSetup(const benchmark::State &state)
+void aos(int n)
 {
-    int n = state.range(0);
+    for (int i = 0; i < n; i++)
+    {
+        dataAoS[i].result = dataAoS[i].a + dataAoS[i].b * dataAoS[i].c;
+    }
+}
+
+void soa(int n)
+{
+    for (int i = 0; i < n; i++)
+    {
+        dataSoA.result[i] = dataSoA.a[i] + dataSoA.b[i] * dataSoA.c[i];
+    }
+}
+
+int main()
+{
+    ZoneScoped;
+
+    const int n = (1 << 20);
 
     dataAoS = (AoS *)calloc(n, sizeof(AoS));
 
@@ -56,11 +74,26 @@ static void DoSetup(const benchmark::State &state)
         dataSoA.h[i] = (i + 1) % 100;
         dataSoA.result[i] = (i + 1) % 100;
     }
-}
 
-static void DoTeardown(const benchmark::State &state)
-{
-    int n = state.range(0);
+    {
+        ZoneScopedN("AoS");
+
+        for (int repeat = 0; repeat < 997; repeat++)
+        {
+            aos(n);
+            results[0] = dataAoS[0].result;
+        }
+    }
+
+    {
+        ZoneScopedN("SoA");
+
+        for (int repeat = 0; repeat < 997; repeat++)
+        {
+            soa(n);
+            results[1] = dataSoA.result[0];
+        }
+    }
 
     free(dataAoS);
 
@@ -74,53 +107,3 @@ static void DoTeardown(const benchmark::State &state)
     free(dataSoA.h);
     free(dataSoA.result);
 }
-
-static void aos_benchmark(benchmark::State &state)
-{
-    for (auto _ : state)
-    {
-        int n = state.range(0);
-
-        aos(n);
-
-        // Do something with the variable so it doesn't get optimized away
-        results[0] = dataAoS[0].result;
-    }
-}
-
-static void soa_benchmark(benchmark::State &state)
-{
-    for (auto _ : state)
-    {
-        int n = state.range(0);
-
-        soa(n);
-
-        // Do something with the variable so it doesn't get optimized away
-        results[1] = dataSoA.result[0];
-    }
-}
-
-void aos(int n)
-{
-    for (int i = 0; i < n; i++)
-    {
-        dataAoS[i].result = dataAoS[i].a + dataAoS[i].b * dataAoS[i].c;
-    }
-}
-
-void soa(int n)
-{
-    for (int i = 0; i < n; i++)
-    {
-        dataSoA.result[i] = dataSoA.a[i] + dataSoA.b[i] * dataSoA.c[i];
-    }
-}
-
-#define START (1 << 10)
-#define END (1 << 20)
-
-BENCHMARK(aos_benchmark)->Setup(DoSetup)->Teardown(DoTeardown)->RangeMultiplier(2)->Range(START, END);
-BENCHMARK(soa_benchmark)->Setup(DoSetup)->Teardown(DoTeardown)->RangeMultiplier(2)->Range(START, END);
-
-BENCHMARK_MAIN();

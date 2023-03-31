@@ -22,5 +22,10 @@ add_subdirectory(predictability)
 add_subdirectory(false-sharing)
 add_subdirectory(memory-aliasing)
 
+add_subdirectory(aos-soa-profile)
+add_subdirectory(array-index-patterns-profile)
+add_subdirectory(cache-associativity-limit-profile)
+add_subdirectory(false-sharing-profile)
+
 add_subdirectory("libs\\benchmark" "benchmark")
 add_subdirectory("libs\\tracy" "tracy")
