@@ -1,5 +1,4 @@
 #include <benchmark/benchmark.h>
-#include <tracy/Tracy.hpp>
 
 #define N (1 << 11)
 #define ROWS N
