@@ -1,0 +1,14 @@
+2023-04-02T06:49:44-00:00
+Running ..\build\clangO0\memory-aliasing\memory-aliasing.exe
+Run on (8 X 1800 MHz CPU s)
+CPU Caches:
+  L1 Data 32 KiB (x4)
+  L1 Instruction 32 KiB (x4)
+  L2 Unified 256 KiB (x4)
+  L3 Unified 6144 KiB (x1)
+***WARNING*** Library was built as DEBUG. Timings may be affected.
+-------------------------------------------------------------------------------
+Benchmark                                     Time             CPU   Iterations
+-------------------------------------------------------------------------------
+write_read_benchmark/1048576            2215334 ns      2232143 ns          280
+write_read_aliased_benchmark/1048576    7963741 ns      7916667 ns           75

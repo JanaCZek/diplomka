@@ -1,0 +1,52 @@
+2023-04-02T06:57:04-00:00
+Running ..\build\clangO2\loop-carried-dependence\loop-carried-dependence.exe
+Run on (8 X 1800 MHz CPU s)
+CPU Caches:
+  L1 Data 32 KiB (x4)
+  L1 Instruction 32 KiB (x4)
+  L2 Unified 256 KiB (x4)
+  L3 Unified 6144 KiB (x1)
+***WARNING*** Library was built as DEBUG. Timings may be affected.
+---------------------------------------------------------------------
+Benchmark                           Time             CPU   Iterations
+---------------------------------------------------------------------
+with_dependence/2                2.91 ns         2.85 ns    235789474
+with_dependence/4                6.13 ns         6.14 ns    112000000
+with_dependence/8                9.27 ns         9.42 ns     74666667
+with_dependence/16               16.5 ns         16.5 ns     40727273
+with_dependence/32               30.9 ns         29.3 ns     22400000
+with_dependence/64               59.6 ns         60.0 ns     11200000
+with_dependence/128               121 ns          117 ns      5600000
+with_dependence/256               237 ns          241 ns      2986667
+with_dependence/512               468 ns          471 ns      1493333
+with_dependence/1024              945 ns          942 ns       746667
+with_dependence/2048             2148 ns         2148 ns       320000
+with_dependence/4096             4289 ns         4332 ns       165926
+with_dependence/8192             8477 ns         8545 ns        89600
+with_dependence/16384           18867 ns        18589 ns        34462
+with_dependence/32768           44838 ns        44922 ns        16000
+with_dependence/65536          114056 ns       115090 ns         7467
+with_dependence/131072         664826 ns       669643 ns         2240
+with_dependence/262144        1131294 ns      1088170 ns          560
+with_dependence/524288        1603792 ns      1612408 ns          407
+with_dependence/1048576       3338347 ns      3293505 ns          204
+without_dependence/2             2.72 ns         2.73 ns    263529412
+without_dependence/4             3.29 ns         3.30 ns    203636364
+without_dependence/8             6.82 ns         6.84 ns    112000000
+without_dependence/16            12.6 ns         12.6 ns     56000000
+without_dependence/32            24.9 ns         25.1 ns     29866667
+without_dependence/64            49.5 ns         48.7 ns     14451613
+without_dependence/128            101 ns          100 ns      6400000
+without_dependence/256            198 ns          201 ns      3733333
+without_dependence/512            393 ns          390 ns      1723077
+without_dependence/1024           786 ns          785 ns       896000
+without_dependence/2048          2485 ns         2455 ns       280000
+without_dependence/4096          5451 ns         5406 ns       144516
+without_dependence/8192         11690 ns        11440 ns        56000
+without_dependence/16384        19675 ns        19496 ns        34462
+without_dependence/32768        44494 ns        44504 ns        15448
+without_dependence/65536        85187 ns        85794 ns         7467
+without_dependence/131072      201324 ns       199507 ns         3446
+without_dependence/262144      553645 ns       546875 ns         1000
+without_dependence/524288     1534113 ns      1506024 ns          498
+without_dependence/1048576    3090614 ns      2979343 ns          236

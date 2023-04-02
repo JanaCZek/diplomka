@@ -1,0 +1,22 @@
+2023-04-02T06:39:39-00:00
+Running ..\build\gccO0\matrix-multiplication-variations\matrix-multiplication-variations.exe
+Run on (8 X 1800 MHz CPU s)
+CPU Caches:
+  L1 Data 32 KiB (x4)
+  L1 Instruction 32 KiB (x4)
+  L2 Unified 256 KiB (x4)
+  L3 Unified 6144 KiB (x1)
+***WARNING*** Library was built as DEBUG. Timings may be affected.
+-----------------------------------------------------
+Benchmark           Time             CPU   Iterations
+-----------------------------------------------------
+ijk/50         353126 ns       353021 ns         2036
+ijk/100       2940407 ns      2949297 ns          249
+jik/50         359091 ns       360947 ns         1948
+jik/100       2857718 ns      2886546 ns          249
+jki/50         439962 ns       439453 ns         1600
+jki/100       3693701 ns      3676471 ns          187
+kji/50         426743 ns       419922 ns         1600
+kji/100       3614527 ns      3605769 ns          195
+kij/50         395840 ns       389945 ns         1723
+kij/100       3213985 ns      3208705 ns          224

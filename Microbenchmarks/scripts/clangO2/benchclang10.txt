@@ -1,0 +1,34 @@
+2023-04-02T06:59:42-00:00
+Running ..\build\clangO2\structure-size\structure-size.exe
+Run on (8 X 1800 MHz CPU s)
+CPU Caches:
+  L1 Data 32 KiB (x4)
+  L1 Instruction 32 KiB (x4)
+  L2 Unified 256 KiB (x4)
+  L3 Unified 6144 KiB (x1)
+***WARNING*** Library was built as DEBUG. Timings may be affected.
+-------------------------------------------------------------------------
+Benchmark                               Time             CPU   Iterations
+-------------------------------------------------------------------------
+data_benchmark/1024                   518 ns          516 ns      1120000
+data_benchmark/2048                  1141 ns         1147 ns       640000
+data_benchmark/4096                  2248 ns         2267 ns       344615
+data_benchmark/8192                  5149 ns         5000 ns       100000
+data_benchmark/16384                15098 ns        14997 ns        44800
+data_benchmark/32768                31244 ns        31145 ns        23579
+data_benchmark/65536                92231 ns        89979 ns         7467
+data_benchmark/131072              165179 ns       167767 ns         3446
+data_benchmark/262144              682801 ns       680106 ns          896
+data_benchmark/524288             2215711 ns      2220174 ns          373
+data_benchmark/1048576            4689912 ns      4603795 ns          112
+data_ordered_benchmark/1024           486 ns          487 ns      1445161
+data_ordered_benchmark/2048          1005 ns         1025 ns       746667
+data_ordered_benchmark/4096          2235 ns         2222 ns       344615
+data_ordered_benchmark/8192          4243 ns         4217 ns       144516
+data_ordered_benchmark/16384         8659 ns         8580 ns        74667
+data_ordered_benchmark/32768        20778 ns        20508 ns        37333
+data_ordered_benchmark/65536        40358 ns        40109 ns        17920
+data_ordered_benchmark/131072       84395 ns        85449 ns         8960
+data_ordered_benchmark/262144      327598 ns       326139 ns         2635
+data_ordered_benchmark/524288      791731 ns       767299 ns          896
+data_ordered_benchmark/1048576    1920808 ns      1902174 ns          345

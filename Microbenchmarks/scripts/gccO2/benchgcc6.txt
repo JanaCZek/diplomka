@@ -1,0 +1,25 @@
+2023-04-02T06:53:15-00:00
+Running ..\build\gccO2\array-index-patterns\array-index-patterns.exe
+Run on (8 X 1800 MHz CPU s)
+CPU Caches:
+  L1 Data 32 KiB (x4)
+  L1 Instruction 32 KiB (x4)
+  L2 Unified 256 KiB (x4)
+  L3 Unified 6144 KiB (x1)
+***WARNING*** Library was built as DEBUG. Timings may be affected.
+-----------------------------------------------------------------
+Benchmark                       Time             CPU   Iterations
+-----------------------------------------------------------------
+sequential_benchmark/1      12115 ns        11719 ns        56000
+pattern_benchmark/1         12069 ns        12207 ns        64000
+strided_benchmark/2         12025 ns        11998 ns        56000
+strided_benchmark/4         11992 ns        11998 ns        56000
+strided_benchmark/8         12124 ns        12277 ns        56000
+strided_benchmark/16        15710 ns        15695 ns        44800
+strided_benchmark/32        19653 ns        19671 ns        37333
+strided_benchmark/64        43021 ns        42550 ns        22400
+strided_benchmark/128       94479 ns        95215 ns         6400
+strided_benchmark/256      121166 ns       121367 ns         7467
+strided_benchmark/512      109541 ns       109863 ns         6400
+strided_benchmark/1024     106166 ns       104627 ns         7467
+random_benchmark/1         146915 ns       144385 ns         4978

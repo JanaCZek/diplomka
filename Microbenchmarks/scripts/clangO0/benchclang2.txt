@@ -1,0 +1,22 @@
+2023-04-02T06:46:22-00:00
+Running ..\build\clangO0\matrix-multiplication-variations\matrix-multiplication-variations.exe
+Run on (8 X 1800 MHz CPU s)
+CPU Caches:
+  L1 Data 32 KiB (x4)
+  L1 Instruction 32 KiB (x4)
+  L2 Unified 256 KiB (x4)
+  L3 Unified 6144 KiB (x1)
+***WARNING*** Library was built as DEBUG. Timings may be affected.
+-----------------------------------------------------
+Benchmark           Time             CPU   Iterations
+-----------------------------------------------------
+ijk/50         358749 ns       360695 ns         2036
+ijk/100       2927800 ns      2949297 ns          249
+jik/50         358827 ns       352926 ns         1948
+jik/100       2930509 ns      2846928 ns          236
+jki/50         430094 ns       429688 ns         1600
+jki/100       3775520 ns      3666201 ns          179
+kji/50         517851 ns       507812 ns         1600
+kji/100       3720205 ns      3578911 ns          179
+kij/50         419680 ns       418527 ns         1792
+kij/100       3346478 ns      3374413 ns          213

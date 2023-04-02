@@ -10,7 +10,7 @@ void array_sum_unrolled_4(double *array, int n, double *result);
 void array_sum(double *array, int n, double *result)
 {
     char functionName[32] = {'\0'};
-    sprintf(functionName, "Array sum: %d", n);
+    sprintf(functionName, "Array sum, size: %d", n);
 
     ZoneScopedN("Array sum");
     ZoneName(functionName, strlen(functionName));
@@ -23,7 +23,7 @@ void array_sum(double *array, int n, double *result)
 void array_sum_unrolled_2(double *array, int n, double *result)
 {
     char functionName[32] = {'\0'};
-    sprintf(functionName, "Array sum unrolled 2: %d", n);
+    sprintf(functionName, "Array sum unrolled 2, size: %d", n);
 
     ZoneScopedN("Array sum unrolled 2");
     ZoneName(functionName, strlen(functionName));
@@ -50,7 +50,7 @@ void array_sum_unrolled_2(double *array, int n, double *result)
 void array_sum_unrolled_4(double *array, int n, double *result)
 {
     char functionName[32] = {'\0'};
-    sprintf(functionName, "Array sum unrolled 4: %d", n);
+    sprintf(functionName, "Array sum unrolled 4, size: %d", n);
 
     ZoneScopedN("Array sum unrolled 4");
     ZoneName(functionName, strlen(functionName));
@@ -103,7 +103,7 @@ int main()
 
         {
             char functionName[32] = {'\0'};
-            sprintf(functionName, "Array sum: %d", n);
+            sprintf(functionName, "Array sum, size: %d", n);
 
             ZoneScopedN("Array sum");
             ZoneName(functionName, strlen(functionName));
@@ -118,7 +118,7 @@ int main()
 
         {
             char functionName[32] = {'\0'};
-            sprintf(functionName, "Array sum unrolled 2: %d", n);
+            sprintf(functionName, "Array sum unrolled 2, size: %d", n);
 
             ZoneScopedN("Array sum unrolled 2");
             ZoneName(functionName, strlen(functionName));
@@ -133,7 +133,7 @@ int main()
 
         {
             char functionName[32] = {'\0'};
-            sprintf(functionName, "Array sum unrolled 4: %d", n);
+            sprintf(functionName, "Array sum unrolled 4, size: %d", n);
 
             ZoneScopedN("Array sum unrolled 4");
             ZoneName(functionName, strlen(functionName));

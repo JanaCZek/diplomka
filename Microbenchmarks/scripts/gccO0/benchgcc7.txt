@@ -1,0 +1,34 @@
+2023-04-02T06:41:26-00:00
+Running ..\build\gccO0\hot-cold\hot-cold.exe
+Run on (8 X 1800 MHz CPU s)
+CPU Caches:
+  L1 Data 32 KiB (x4)
+  L1 Instruction 32 KiB (x4)
+  L2 Unified 256 KiB (x4)
+  L3 Unified 6144 KiB (x1)
+***WARNING*** Library was built as DEBUG. Timings may be affected.
+----------------------------------------------------------------------
+Benchmark                            Time             CPU   Iterations
+----------------------------------------------------------------------
+together_benchmark/1024           3995 ns         3934 ns       186667
+together_benchmark/2048           7812 ns         7812 ns       112000
+together_benchmark/4096          15381 ns        15346 ns        44800
+together_benchmark/8192          29990 ns        30134 ns        24889
+together_benchmark/16384        139864 ns       117188 ns        11200
+together_benchmark/32768        211788 ns       205776 ns         4480
+together_benchmark/65536        587289 ns       571987 ns         1120
+together_benchmark/131072      1533753 ns      1506696 ns          560
+together_benchmark/262144      2740748 ns      2698293 ns          249
+together_benchmark/524288      5364215 ns      5312500 ns          100
+together_benchmark/1048576     9092884 ns      9027778 ns           90
+separated_benchmark/1024          3037 ns         3048 ns       235789
+separated_benchmark/2048          6668 ns         6696 ns       112000
+separated_benchmark/4096         16256 ns        16462 ns        56000
+separated_benchmark/8192         29378 ns        29157 ns        23579
+separated_benchmark/16384        57045 ns        57199 ns        11200
+separated_benchmark/32768       103025 ns       102539 ns         6400
+separated_benchmark/65536       216179 ns       217644 ns         3446
+separated_benchmark/131072      508857 ns       515625 ns         1000
+separated_benchmark/262144     1105125 ns      1123047 ns          640
+separated_benchmark/524288     2296560 ns      2294922 ns          320
+separated_benchmark/1048576    5535914 ns      5553464 ns          166

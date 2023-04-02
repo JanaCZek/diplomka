@@ -1,0 +1,34 @@
+2023-04-02T06:42:32-00:00
+Running ..\build\gccO0\structure-size\structure-size.exe
+Run on (8 X 1800 MHz CPU s)
+CPU Caches:
+  L1 Data 32 KiB (x4)
+  L1 Instruction 32 KiB (x4)
+  L2 Unified 256 KiB (x4)
+  L3 Unified 6144 KiB (x1)
+***WARNING*** Library was built as DEBUG. Timings may be affected.
+-------------------------------------------------------------------------
+Benchmark                               Time             CPU   Iterations
+-------------------------------------------------------------------------
+data_benchmark/1024                  3199 ns         3146 ns       203636
+data_benchmark/2048                  5950 ns         5999 ns       112000
+data_benchmark/4096                 14020 ns        13811 ns        49778
+data_benchmark/8192                 23629 ns        23438 ns        28000
+data_benchmark/16384                48776 ns        47085 ns        14933
+data_benchmark/32768                99485 ns       100442 ns         7467
+data_benchmark/65536               287543 ns       284624 ns         3733
+data_benchmark/131072              661251 ns       655692 ns         1120
+data_benchmark/262144             1129119 ns      1143973 ns          560
+data_benchmark/524288             2310029 ns      2343750 ns          320
+data_benchmark/1048576            4429579 ns      4464286 ns          154
+data_ordered_benchmark/1024          2709 ns         2727 ns       263529
+data_ordered_benchmark/2048          5341 ns         5301 ns       112000
+data_ordered_benchmark/4096         10620 ns        10498 ns        64000
+data_ordered_benchmark/8192         23343 ns        23577 ns        34462
+data_ordered_benchmark/16384        45833 ns        45516 ns        15448
+data_ordered_benchmark/32768        84254 ns        83702 ns         7467
+data_ordered_benchmark/65536       169537 ns       168795 ns         4073
+data_ordered_benchmark/131072      345924 ns       345346 ns         2036
+data_ordered_benchmark/262144      723726 ns       725446 ns         1120
+data_ordered_benchmark/524288     1534500 ns      1534598 ns          448
+data_ordered_benchmark/1048576    3180351 ns      3138951 ns          224

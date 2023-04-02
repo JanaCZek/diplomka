@@ -1,0 +1,22 @@
+2023-04-02T06:53:05-00:00
+Running ..\build\gccO2\cache-associativity-limit\cache-associativity-limit.exe
+Run on (8 X 1800 MHz CPU s)
+CPU Caches:
+  L1 Data 32 KiB (x4)
+  L1 Instruction 32 KiB (x4)
+  L2 Unified 256 KiB (x4)
+  L3 Unified 6144 KiB (x1)
+***WARNING*** Library was built as DEBUG. Timings may be affected.
+----------------------------------------------------------------------------------
+Benchmark                                        Time             CPU   Iterations
+----------------------------------------------------------------------------------
+cache_associativity_limit_benchmark/30       18187 ns        18415 ns        37333
+cache_associativity_limit_benchmark/32       21960 ns        21972 ns        29867
+cache_associativity_limit_benchmark/60       18926 ns        19043 ns        34462
+cache_associativity_limit_benchmark/64       42526 ns        42725 ns        17920
+cache_associativity_limit_benchmark/120      23123 ns        23123 ns        34462
+cache_associativity_limit_benchmark/128      93545 ns        93471 ns        11200
+cache_associativity_limit_benchmark/250      30048 ns        29820 ns        23579
+cache_associativity_limit_benchmark/256      87858 ns        88937 ns         8960
+cache_associativity_limit_benchmark/510      56619 ns        54688 ns        10000
+cache_associativity_limit_benchmark/512      89298 ns        87887 ns         7467

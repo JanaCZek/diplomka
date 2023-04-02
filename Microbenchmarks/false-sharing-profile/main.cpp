@@ -1,10 +1,6 @@
 #include <stdint.h>
-#include <mutex>
 #include <omp.h>
 #include <tracy/Tracy.hpp>
-
-std::atomic<int32_t> shared;
-std::mutex mutex;
 
 volatile int32_t dataA, dataB, dataC, dataD;
 
@@ -15,22 +11,17 @@ alignas(ALIGNMENT) volatile int32_t dataAlignedB;
 alignas(ALIGNMENT) volatile int32_t dataAlignedC;
 alignas(ALIGNMENT) volatile int32_t dataAlignedD;
 
-void true_sharing(int n);
 void false_sharing(int n);
 void false_sharing_fix(int n);
 
-void true_sharing(int n)
-{
-#pragma omp parallel num_threads(4)
-    for (int i = 0; i < n; i++)
-    {
-        mutex.lock();
-        ++shared;
-        mutex.unlock();
-    }
-}
 void false_sharing(int n)
 {
+    char functionName[32] = {'\0'};
+    sprintf(functionName, "False sharing, size: %d", n);
+
+    ZoneScopedN("False sharing");
+    ZoneName(functionName, strlen(functionName));
+
 #pragma omp parallel num_threads(4)
     {
         int thread_num = omp_get_thread_num();
@@ -65,6 +56,12 @@ void false_sharing(int n)
 }
 void false_sharing_fix(int n)
 {
+    char functionName[32] = {'\0'};
+    sprintf(functionName, "False sharing fix, size: %d", n);
+
+    ZoneScopedN("False sharing fix");
+    ZoneName(functionName, strlen(functionName));
+
 #pragma omp parallel num_threads(4)
     {
         int thread_num = omp_get_thread_num();

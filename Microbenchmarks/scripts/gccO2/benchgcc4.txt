@@ -1,0 +1,48 @@
+2023-04-02T06:52:33-00:00
+Running ..\build\gccO2\loop-unrolling\loop-unrolling.exe
+Run on (8 X 1800 MHz CPU s)
+CPU Caches:
+  L1 Data 32 KiB (x4)
+  L1 Instruction 32 KiB (x4)
+  L2 Unified 256 KiB (x4)
+  L3 Unified 6144 KiB (x1)
+***WARNING*** Library was built as DEBUG. Timings may be affected.
+-------------------------------------------------------------------------------
+Benchmark                                     Time             CPU   Iterations
+-------------------------------------------------------------------------------
+array_sum_benchmark/16                     7.52 ns         7.11 ns    112000000
+array_sum_benchmark/32                     16.5 ns         16.5 ns     40727273
+array_sum_benchmark/64                     42.8 ns         42.4 ns     16592593
+array_sum_benchmark/128                     100 ns          100 ns      6400000
+array_sum_benchmark/256                     251 ns          251 ns      2800000
+array_sum_benchmark/512                     556 ns          562 ns      1000000
+array_sum_benchmark/1024                   1168 ns         1172 ns       560000
+array_sum_benchmark/2048                   2420 ns         2407 ns       298667
+array_sum_benchmark/4096                   4958 ns         5000 ns       100000
+array_sum_benchmark/8192                   9925 ns        10045 ns        74667
+array_sum_benchmark/16384                 20210 ns        19950 ns        34462
+array_sum_benchmark/32768                 40838 ns        40806 ns        17231
+array_sum_unrolled_2_benchmark/16          6.96 ns         6.98 ns    112000000
+array_sum_unrolled_2_benchmark/32          12.3 ns         12.3 ns     56000000
+array_sum_unrolled_2_benchmark/64          27.4 ns         27.0 ns     24888889
+array_sum_unrolled_2_benchmark/128         52.1 ns         51.6 ns     11200000
+array_sum_unrolled_2_benchmark/256          126 ns          128 ns      5600000
+array_sum_unrolled_2_benchmark/512          278 ns          276 ns      2488889
+array_sum_unrolled_2_benchmark/1024         586 ns          586 ns      1120000
+array_sum_unrolled_2_benchmark/2048        1208 ns         1200 ns       560000
+array_sum_unrolled_2_benchmark/4096        2459 ns         2455 ns       280000
+array_sum_unrolled_2_benchmark/8192        4898 ns         5000 ns       100000
+array_sum_unrolled_2_benchmark/16384       9830 ns         9835 ns        74667
+array_sum_unrolled_2_benchmark/32768      19749 ns        19950 ns        34462
+array_sum_unrolled_4_benchmark/16          4.82 ns         4.87 ns    144516129
+array_sum_unrolled_4_benchmark/32          8.19 ns         8.20 ns     89600000
+array_sum_unrolled_4_benchmark/64          16.1 ns         15.7 ns     40727273
+array_sum_unrolled_4_benchmark/128         34.1 ns         33.8 ns     20363636
+array_sum_unrolled_4_benchmark/256         68.7 ns         69.8 ns     11200000
+array_sum_unrolled_4_benchmark/512          150 ns          150 ns      4480000
+array_sum_unrolled_4_benchmark/1024         329 ns          325 ns      2357895
+array_sum_unrolled_4_benchmark/2048         639 ns          642 ns      1120000
+array_sum_unrolled_4_benchmark/4096        1312 ns         1318 ns       497778
+array_sum_unrolled_4_benchmark/8192        2795 ns         2762 ns       248889
+array_sum_unrolled_4_benchmark/16384       5778 ns         5720 ns       112000
+array_sum_unrolled_4_benchmark/32768      12299 ns        12451 ns        64000

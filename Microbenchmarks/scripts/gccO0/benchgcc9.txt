@@ -1,0 +1,34 @@
+2023-04-02T06:42:11-00:00
+Running ..\build\gccO0\simd\simd.exe
+Run on (8 X 1800 MHz CPU s)
+CPU Caches:
+  L1 Data 32 KiB (x4)
+  L1 Instruction 32 KiB (x4)
+  L2 Unified 256 KiB (x4)
+  L3 Unified 6144 KiB (x1)
+***WARNING*** Library was built as DEBUG. Timings may be affected.
+---------------------------------------------------------------------------
+Benchmark                                 Time             CPU   Iterations
+---------------------------------------------------------------------------
+array_sum_benchmark/1024               2767 ns         2762 ns       248889
+array_sum_benchmark/2048               5522 ns         5469 ns       100000
+array_sum_benchmark/4096              11086 ns        10986 ns        64000
+array_sum_benchmark/8192              23685 ns        21972 ns        29867
+array_sum_benchmark/16384             73274 ns        54688 ns        10000
+array_sum_benchmark/32768            103501 ns       102534 ns         7467
+array_sum_benchmark/65536            259833 ns       256319 ns         2987
+array_sum_benchmark/131072           469923 ns       468532 ns         1434
+array_sum_benchmark/262144          1022095 ns      1000977 ns          640
+array_sum_benchmark/524288          1688454 ns      1674107 ns          448
+array_sum_benchmark/1048576         3200591 ns      3216912 ns          204
+array_sum_simd_benchmark/1024          2378 ns         2393 ns       320000
+array_sum_simd_benchmark/2048          4943 ns         4883 ns       112000
+array_sum_simd_benchmark/4096         10224 ns        10254 ns        74667
+array_sum_simd_benchmark/8192         23387 ns        22461 ns        32000
+array_sum_simd_benchmark/16384        36216 ns        35749 ns        17920
+array_sum_simd_benchmark/32768        78395 ns        76730 ns         8960
+array_sum_simd_benchmark/65536       170705 ns       172631 ns         4073
+array_sum_simd_benchmark/131072      356714 ns       362723 ns         2240
+array_sum_simd_benchmark/262144      743414 ns       749860 ns          896
+array_sum_simd_benchmark/524288     1340188 ns      1349147 ns          498
+array_sum_simd_benchmark/1048576    2801443 ns      2823795 ns          249

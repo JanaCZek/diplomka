@@ -1,0 +1,22 @@
+2023-04-02T06:58:16-00:00
+Running ..\build\clangO2\cache-associativity-limit\cache-associativity-limit.exe
+Run on (8 X 1800 MHz CPU s)
+CPU Caches:
+  L1 Data 32 KiB (x4)
+  L1 Instruction 32 KiB (x4)
+  L2 Unified 256 KiB (x4)
+  L3 Unified 6144 KiB (x1)
+***WARNING*** Library was built as DEBUG. Timings may be affected.
+----------------------------------------------------------------------------------
+Benchmark                                        Time             CPU   Iterations
+----------------------------------------------------------------------------------
+cache_associativity_limit_benchmark/30       15491 ns        15346 ns        44800
+cache_associativity_limit_benchmark/32       19532 ns        19496 ns        34462
+cache_associativity_limit_benchmark/60       17014 ns        17264 ns        40727
+cache_associativity_limit_benchmark/64       40160 ns        40284 ns        21333
+cache_associativity_limit_benchmark/120      17008 ns        17160 ns        37333
+cache_associativity_limit_benchmark/128      83561 ns        81961 ns         8960
+cache_associativity_limit_benchmark/250      23804 ns        23542 ns        29867
+cache_associativity_limit_benchmark/256     117696 ns       119629 ns         6400
+cache_associativity_limit_benchmark/510      45397 ns        45516 ns        15448
+cache_associativity_limit_benchmark/512     105027 ns       104627 ns         7467
