@@ -1,0 +1,25 @@
+2023-04-02T11:09:21+02:00
+Running ..\out\build\x64-Debug-O0\array-index-patterns\array-index-patterns.exe
+Run on (8 X 1800 MHz CPU s)
+CPU Caches:
+  L1 Data 32 KiB (x4)
+  L1 Instruction 32 KiB (x4)
+  L2 Unified 256 KiB (x4)
+  L3 Unified 6144 KiB (x1)
+***WARNING*** Library was built as DEBUG. Timings may be affected.
+-----------------------------------------------------------------
+Benchmark                       Time             CPU   Iterations
+-----------------------------------------------------------------
+sequential_benchmark/1      27508 ns        27169 ns        23579
+pattern_benchmark/1         32337 ns        32471 ns        23579
+strided_benchmark/2         27414 ns        26995 ns        24889
+strided_benchmark/4         27256 ns        26995 ns        24889
+strided_benchmark/8         27198 ns        26995 ns        24889
+strided_benchmark/16        27998 ns        27867 ns        26353
+strided_benchmark/32        34699 ns        34877 ns        22400
+strided_benchmark/64        50461 ns        50223 ns        11200
+strided_benchmark/128      102099 ns       100442 ns         7467
+strided_benchmark/256      132232 ns       131830 ns         4978
+strided_benchmark/512      144652 ns       146484 ns         4480
+strided_benchmark/1024     138468 ns       136719 ns         5600
+random_benchmark/1         478483 ns       470948 ns         1493

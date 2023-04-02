@@ -1,0 +1,15 @@
+2023-04-02T11:11:00+02:00
+Running ..\out\build\x64-Debug-O0\predictability\predictability.exe
+Run on (8 X 1800 MHz CPU s)
+CPU Caches:
+  L1 Data 32 KiB (x4)
+  L1 Instruction 32 KiB (x4)
+  L2 Unified 256 KiB (x4)
+  L3 Unified 6144 KiB (x1)
+***WARNING*** Library was built as DEBUG. Timings may be affected.
+-------------------------------------------------------------------------------
+Benchmark                                     Time             CPU   Iterations
+-------------------------------------------------------------------------------
+never_benchmark/1048576                 1921230 ns      1902174 ns          345
+always_benchmark/1048576                2611263 ns      2635542 ns          249
+not_so_predictable_benchmark/1048576    7257510 ns      7291667 ns           90

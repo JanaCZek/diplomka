@@ -1,4 +1,4 @@
-2023-04-02T06:46:22-00:00
+2023-04-02T09:57:54-00:00
 Running ..\build\clangO0\matrix-multiplication-variations\matrix-multiplication-variations.exe
 Run on (8 X 1800 MHz CPU s)
 CPU Caches:
@@ -10,13 +10,15 @@ CPU Caches:
 -----------------------------------------------------
 Benchmark           Time             CPU   Iterations
 -----------------------------------------------------
-ijk/50         358749 ns       360695 ns         2036
-ijk/100       2927800 ns      2949297 ns          249
-jik/50         358827 ns       352926 ns         1948
-jik/100       2930509 ns      2846928 ns          236
-jki/50         430094 ns       429688 ns         1600
-jki/100       3775520 ns      3666201 ns          179
-kji/50         517851 ns       507812 ns         1600
-kji/100       3720205 ns      3578911 ns          179
-kij/50         419680 ns       418527 ns         1792
-kij/100       3346478 ns      3374413 ns          213
+ijk/50         360295 ns       353021 ns         2036
+ijk/100       2907305 ns      2949297 ns          249
+jik/50         347746 ns       345346 ns         2036
+jik/100       3112636 ns      3012048 ns          249
+jki/50         430437 ns       433243 ns         1659
+jki/100       3839191 ns      3753492 ns          179
+kji/50         433985 ns       433243 ns         1659
+kji/100       3764956 ns      3760027 ns          187
+kij/50         391065 ns       392369 ns         1792
+kij/100       3222219 ns      3227700 ns          213
+ikj/50         396420 ns       392369 ns         1792
+ikj/100       3192592 ns      3208705 ns          224

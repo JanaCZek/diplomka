@@ -1,0 +1,34 @@
+2023-04-02T11:10:39+02:00
+Running ..\out\build\x64-Debug-O0\structure-size\structure-size.exe
+Run on (8 X 1800 MHz CPU s)
+CPU Caches:
+  L1 Data 32 KiB (x4)
+  L1 Instruction 32 KiB (x4)
+  L2 Unified 256 KiB (x4)
+  L3 Unified 6144 KiB (x1)
+***WARNING*** Library was built as DEBUG. Timings may be affected.
+-------------------------------------------------------------------------
+Benchmark                               Time             CPU   Iterations
+-------------------------------------------------------------------------
+data_benchmark/1024                  2415 ns         2407 ns       298667
+data_benchmark/2048                  4856 ns         4865 ns       144516
+data_benchmark/4096                  9574 ns         9417 ns        74667
+data_benchmark/8192                 19098 ns        19252 ns        37333
+data_benchmark/16384                38778 ns        39341 ns        18667
+data_benchmark/32768                78384 ns        78474 ns         8960
+data_benchmark/65536               163601 ns       163923 ns         4480
+data_benchmark/131072              333890 ns       337672 ns         2036
+data_benchmark/262144              831463 ns       819615 ns          896
+data_benchmark/524288             1858914 ns      1843164 ns          373
+data_benchmark/1048576            3780506 ns      3846154 ns          195
+data_ordered_benchmark/1024          2359 ns         2354 ns       298667
+data_ordered_benchmark/2048          4687 ns         4708 ns       149333
+data_ordered_benchmark/4096          9290 ns         9208 ns        74667
+data_ordered_benchmark/8192         18633 ns        18415 ns        37333
+data_ordered_benchmark/16384        37336 ns        37667 ns        18667
+data_ordered_benchmark/32768        75147 ns        74986 ns         8960
+data_ordered_benchmark/65536       150237 ns       149972 ns         4480
+data_ordered_benchmark/131072      308870 ns       306974 ns         2036
+data_ordered_benchmark/262144      630117 ns       641741 ns         1120
+data_ordered_benchmark/524288     1322392 ns      1311384 ns          560
+data_ordered_benchmark/1048576    2709245 ns      2761044 ns          249

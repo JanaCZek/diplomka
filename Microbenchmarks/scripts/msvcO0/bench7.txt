@@ -1,0 +1,34 @@
+2023-04-02T11:09:35+02:00
+Running ..\out\build\x64-Debug-O0\hot-cold\hot-cold.exe
+Run on (8 X 1800 MHz CPU s)
+CPU Caches:
+  L1 Data 32 KiB (x4)
+  L1 Instruction 32 KiB (x4)
+  L2 Unified 256 KiB (x4)
+  L3 Unified 6144 KiB (x1)
+***WARNING*** Library was built as DEBUG. Timings may be affected.
+----------------------------------------------------------------------
+Benchmark                            Time             CPU   Iterations
+----------------------------------------------------------------------
+together_benchmark/1024           3090 ns         3076 ns       213333
+together_benchmark/2048           6266 ns         6278 ns       112000
+together_benchmark/4096          12832 ns        12835 ns        56000
+together_benchmark/8192          29649 ns        29646 ns        26353
+together_benchmark/16384         75078 ns        75335 ns        11200
+together_benchmark/32768        146823 ns       146484 ns         6400
+together_benchmark/65536        351338 ns       351562 ns         1600
+together_benchmark/131072      1179060 ns      1171875 ns          560
+together_benchmark/262144      2008440 ns      1992754 ns          345
+together_benchmark/524288      3886138 ns      3906250 ns          172
+together_benchmark/1048576     7468509 ns      7465278 ns           90
+separated_benchmark/1024          2800 ns         2762 ns       248889
+separated_benchmark/2048          5698 ns         5781 ns       100000
+separated_benchmark/4096         11467 ns        11475 ns        64000
+separated_benchmark/8192         23096 ns        23019 ns        29867
+separated_benchmark/16384        47392 ns        46490 ns        14452
+separated_benchmark/32768        95289 ns        96257 ns         7467
+separated_benchmark/65536       191495 ns       190438 ns         3446
+separated_benchmark/131072      402516 ns       401088 ns         1792
+separated_benchmark/262144      950629 ns       941265 ns          747
+separated_benchmark/524288     1959001 ns      1947464 ns          345
+separated_benchmark/1048576    3873466 ns      3906250 ns          172

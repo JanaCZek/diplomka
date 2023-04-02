@@ -1,0 +1,52 @@
+2023-04-02T11:07:58+02:00
+Running ..\out\build\x64-Debug-O0\loop-carried-dependence\loop-carried-dependence.exe
+Run on (8 X 1800 MHz CPU s)
+CPU Caches:
+  L1 Data 32 KiB (x4)
+  L1 Instruction 32 KiB (x4)
+  L2 Unified 256 KiB (x4)
+  L3 Unified 6144 KiB (x1)
+***WARNING*** Library was built as DEBUG. Timings may be affected.
+---------------------------------------------------------------------
+Benchmark                           Time             CPU   Iterations
+---------------------------------------------------------------------
+with_dependence/2                18.4 ns         18.1 ns     34461538
+with_dependence/4                25.7 ns         25.7 ns     28000000
+with_dependence/8                40.4 ns         40.8 ns     17230769
+with_dependence/16               69.9 ns         69.8 ns      8960000
+with_dependence/32                141 ns          135 ns      4977778
+with_dependence/64                333 ns          301 ns      2488889
+with_dependence/128               504 ns          500 ns      1000000
+with_dependence/256              1070 ns         1074 ns       640000
+with_dependence/512              1932 ns         1950 ns       344615
+with_dependence/1024             4708 ns         4534 ns       172308
+with_dependence/2048            12512 ns        11719 ns        64000
+with_dependence/4096            16902 ns        16776 ns        34462
+with_dependence/8192            31362 ns        31495 ns        21333
+with_dependence/16384           63465 ns        62779 ns        11200
+with_dependence/32768          134674 ns       133929 ns         5600
+with_dependence/65536          288659 ns       290560 ns         2635
+with_dependence/131072         661033 ns       662667 ns          896
+with_dependence/262144        1434405 ns      1443273 ns          498
+with_dependence/524288        3353730 ns      3417969 ns          224
+with_dependence/1048576       5850681 ns      5859375 ns          112
+without_dependence/2             14.5 ns         14.3 ns     44800000
+without_dependence/4             22.0 ns         22.0 ns     32000000
+without_dependence/8             36.9 ns         36.9 ns     19478261
+without_dependence/16            66.2 ns         65.6 ns     11200000
+without_dependence/32             124 ns          123 ns      5600000
+without_dependence/64             250 ns          251 ns      2800000
+without_dependence/128            510 ns          508 ns      1445161
+without_dependence/256            953 ns          942 ns       746667
+without_dependence/512           1905 ns         1883 ns       373333
+without_dependence/1024          3928 ns         3924 ns       179200
+without_dependence/2048          7714 ns         7673 ns        89600
+without_dependence/4096         15656 ns        15695 ns        44800
+without_dependence/8192         32028 ns        32087 ns        22400
+without_dependence/16384        67966 ns        65569 ns        11200
+without_dependence/32768       144546 ns       142997 ns         4480
+without_dependence/65536       274310 ns       272770 ns         2635
+without_dependence/131072      684545 ns       680106 ns          896
+without_dependence/262144     1427253 ns      1429967 ns          448
+without_dependence/524288     2943741 ns      2913136 ns          236
+without_dependence/1048576    5864255 ns      5859375 ns          112

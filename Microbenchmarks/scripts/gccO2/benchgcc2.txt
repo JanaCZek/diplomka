@@ -1,4 +1,4 @@
-2023-04-02T06:51:47-00:00
+2023-04-02T09:57:24-00:00
 Running ..\build\gccO2\matrix-multiplication-variations\matrix-multiplication-variations.exe
 Run on (8 X 1800 MHz CPU s)
 CPU Caches:
@@ -10,13 +10,15 @@ CPU Caches:
 -----------------------------------------------------
 Benchmark           Time             CPU   Iterations
 -----------------------------------------------------
-ijk/50         120006 ns       114746 ns         6400
-ijk/100       1082740 ns      1088170 ns          560
-jik/50         108840 ns       107422 ns         6400
-jik/100       1094512 ns      1098633 ns          640
-jki/50         102569 ns       102539 ns         6400
-jki/100        978751 ns       941265 ns          747
-kji/50         102460 ns       102534 ns         7467
-kji/100        924180 ns       906808 ns          896
-kij/50          81295 ns        81961 ns         8960
-kij/100        710000 ns       711496 ns         1120
+ijk/50         106409 ns       107422 ns         6400
+ijk/100       1064144 ns      1049805 ns          640
+jik/50         107377 ns       108812 ns         7467
+jik/100       1081382 ns      1074219 ns          640
+jki/50          98068 ns        98349 ns         7467
+jki/100       1016239 ns      1000977 ns          640
+kji/50          97084 ns        97656 ns         6400
+kji/100       1014958 ns      1004016 ns          747
+kij/50          78745 ns        78474 ns         8960
+kij/100        625636 ns       627790 ns         1120
+ikj/50          78055 ns        78125 ns        11200
+ikj/100        614655 ns       613839 ns         1120

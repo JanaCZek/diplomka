@@ -1,0 +1,34 @@
+2023-04-02T11:21:20+02:00
+Running ..\out\build\x64-Debug-O2\aos-soa\aos-soa.exe
+Run on (8 X 1800 MHz CPU s)
+CPU Caches:
+  L1 Data 32 KiB (x4)
+  L1 Instruction 32 KiB (x4)
+  L2 Unified 256 KiB (x4)
+  L3 Unified 6144 KiB (x1)
+***WARNING*** Library was built as DEBUG. Timings may be affected.
+----------------------------------------------------------------
+Benchmark                      Time             CPU   Iterations
+----------------------------------------------------------------
+aos_benchmark/1024          2149 ns         2176 ns       344615
+aos_benchmark/2048          4344 ns         4353 ns       172308
+aos_benchmark/4096          8324 ns         8370 ns        74667
+aos_benchmark/8192         17477 ns        17578 ns        37333
+aos_benchmark/16384        47786 ns        48131 ns        22400
+aos_benchmark/32768        81160 ns        83008 ns         6400
+aos_benchmark/65536       209217 ns       210993 ns         4073
+aos_benchmark/131072      685296 ns       683594 ns         1120
+aos_benchmark/262144     2206768 ns      2220174 ns          373
+aos_benchmark/524288     5040638 ns      4905523 ns          172
+aos_benchmark/1048576    9942012 ns      9722222 ns           90
+soa_benchmark/1024           541 ns          531 ns      1000000
+soa_benchmark/2048          1349 ns         1350 ns       497778
+soa_benchmark/4096          2183 ns         2148 ns       320000
+soa_benchmark/8192          5348 ns         5156 ns       100000
+soa_benchmark/16384        11944 ns        11998 ns        56000
+soa_benchmark/32768        43135 ns        41853 ns        17920
+soa_benchmark/65536       127313 ns       117188 ns         5600
+soa_benchmark/131072      286703 ns       276589 ns         3446
+soa_benchmark/262144      922136 ns       864955 ns         1120
+soa_benchmark/524288     1166366 ns      1171875 ns          560
+soa_benchmark/1048576    2342196 ns      2371652 ns          224

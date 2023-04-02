@@ -1,0 +1,14 @@
+2023-04-02T11:07:45+02:00
+Running ..\out\build\x64-Debug-O0\two-d-array-iteration\two-d-array-iteration.exe
+Run on (8 X 1800 MHz CPU s)
+CPU Caches:
+  L1 Data 32 KiB (x4)
+  L1 Instruction 32 KiB (x4)
+  L2 Unified 256 KiB (x4)
+  L3 Unified 6144 KiB (x1)
+***WARNING*** Library was built as DEBUG. Timings may be affected.
+-----------------------------------------------------
+Benchmark           Time             CPU   Iterations
+-----------------------------------------------------
+rows_cols    25561550 ns     21354167 ns           30
+cols_rows    38252386 ns     37946429 ns           14

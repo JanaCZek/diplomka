@@ -1,0 +1,22 @@
+2023-04-02T11:09:08+02:00
+Running ..\out\build\x64-Debug-O0\cache-associativity-limit\cache-associativity-limit.exe
+Run on (8 X 1800 MHz CPU s)
+CPU Caches:
+  L1 Data 32 KiB (x4)
+  L1 Instruction 32 KiB (x4)
+  L2 Unified 256 KiB (x4)
+  L3 Unified 6144 KiB (x1)
+***WARNING*** Library was built as DEBUG. Timings may be affected.
+----------------------------------------------------------------------------------
+Benchmark                                        Time             CPU   Iterations
+----------------------------------------------------------------------------------
+cache_associativity_limit_benchmark/30       31433 ns        31390 ns        22400
+cache_associativity_limit_benchmark/32       83011 ns        75195 ns        16000
+cache_associativity_limit_benchmark/60       65073 ns        59430 ns        18667
+cache_associativity_limit_benchmark/64       71293 ns        71150 ns        11200
+cache_associativity_limit_benchmark/120      46773 ns        43526 ns        18667
+cache_associativity_limit_benchmark/128     142132 ns       138467 ns         5755
+cache_associativity_limit_benchmark/250      51170 ns        51562 ns        10000
+cache_associativity_limit_benchmark/256     117929 ns       117188 ns         5600
+cache_associativity_limit_benchmark/510      43188 ns        42969 ns        16000
+cache_associativity_limit_benchmark/512     134629 ns       131138 ns         5600
