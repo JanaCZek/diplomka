@@ -149,8 +149,8 @@ void false_sharing_fix(int n)
 
 #define N (1 << 20)
 
-BENCHMARK(true_sharing_benchmark)->Setup(DoSetup)->Teardown(DoTeardown)->Arg(N);
-BENCHMARK(false_sharing_benchmark)->Setup(DoSetup)->Teardown(DoTeardown)->Arg(N);
-BENCHMARK(false_sharing_fix_benchmark)->Setup(DoSetup)->Teardown(DoTeardown)->Arg(N);
+BENCHMARK(true_sharing_benchmark)->Setup(DoSetup)->Teardown(DoTeardown)->Unit(benchmark::kMillisecond)->Arg(N);
+BENCHMARK(false_sharing_benchmark)->Setup(DoSetup)->Teardown(DoTeardown)->Unit(benchmark::kMillisecond)->Arg(N);
+BENCHMARK(false_sharing_fix_benchmark)->Setup(DoSetup)->Teardown(DoTeardown)->Unit(benchmark::kMillisecond)->Arg(N);
 
 BENCHMARK_MAIN();

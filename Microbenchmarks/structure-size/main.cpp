@@ -1,6 +1,10 @@
 #include <stdint.h>
 #include <benchmark/benchmark.h>
 
+#define SMALL (2000)
+#define MEDIUM (30000)
+#define LARGE (800000)
+
 int64_t results[2] = {0, 0};
 
 struct Data
@@ -87,10 +91,7 @@ static void data_ordered_benchmark(benchmark::State &state)
     }
 }
 
-#define START (1 << 10)
-#define END (1 << 20)
-
-BENCHMARK(data_benchmark)->Setup(DoSetup)->Teardown(DoTeardown)->RangeMultiplier(2)->Range(START, END);
-BENCHMARK(data_ordered_benchmark)->Setup(DoSetup)->Teardown(DoTeardown)->RangeMultiplier(2)->Range(START, END);
+BENCHMARK(data_benchmark)->Setup(DoSetup)->Teardown(DoTeardown)->Unit(benchmark::kMillisecond)->Arg(SMALL)->Arg(MEDIUM)->Arg(LARGE);
+BENCHMARK(data_ordered_benchmark)->Setup(DoSetup)->Teardown(DoTeardown)->Unit(benchmark::kMillisecond)->Arg(SMALL)->Arg(MEDIUM)->Arg(LARGE);
 
 BENCHMARK_MAIN();

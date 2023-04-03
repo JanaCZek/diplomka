@@ -1,5 +1,9 @@
 #include <benchmark/benchmark.h>
 
+#define SMALL (2000)
+#define MEDIUM (30000)
+#define LARGE (800000)
+
 double *array;
 double results[3] = { 0.0, 0.0, 0.0 };
 
@@ -115,11 +119,8 @@ void array_sum_unrolled_4(double *array, int n, double *result)
     *result = accumulator;
 }
 
-#define START (1 << 4)
-#define END (1 << 15)
-
-BENCHMARK(array_sum_benchmark)->Setup(DoSetup)->Teardown(DoTeardown)->RangeMultiplier(2)->Range(START, END);
-BENCHMARK(array_sum_unrolled_2_benchmark)->Setup(DoSetup)->Teardown(DoTeardown)->RangeMultiplier(2)->Range(START, END);
-BENCHMARK(array_sum_unrolled_4_benchmark)->Setup(DoSetup)->Teardown(DoTeardown)->RangeMultiplier(2)->Range(START, END);
+BENCHMARK(array_sum_benchmark)->Setup(DoSetup)->Teardown(DoTeardown)->Unit(benchmark::kMillisecond)->Arg(SMALL)->Arg(MEDIUM)->Arg(LARGE);
+BENCHMARK(array_sum_unrolled_2_benchmark)->Setup(DoSetup)->Teardown(DoTeardown)->Unit(benchmark::kMillisecond)->RangeMultiplier(2)->Arg(SMALL)->Arg(MEDIUM)->Arg(LARGE);
+BENCHMARK(array_sum_unrolled_4_benchmark)->Setup(DoSetup)->Teardown(DoTeardown)->Unit(benchmark::kMillisecond)->RangeMultiplier(2)->Arg(SMALL)->Arg(MEDIUM)->Arg(LARGE);
 
 BENCHMARK_MAIN();

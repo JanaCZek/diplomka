@@ -56,7 +56,7 @@ void write_read(double *src, double *dest, int n)
     }
 }
 
-BENCHMARK(write_read_benchmark)->Setup(DoSetup)->Teardown(DoTeardown)->Arg(N);
-BENCHMARK(write_read_aliased_benchmark)->Setup(DoSetup)->Teardown(DoTeardown)->Arg(N);
+BENCHMARK(write_read_benchmark)->Setup(DoSetup)->Teardown(DoTeardown)->Unit(benchmark::kMillisecond)->Arg(N);
+BENCHMARK(write_read_aliased_benchmark)->Setup(DoSetup)->Teardown(DoTeardown)->Unit(benchmark::kMillisecond)->Arg(N);
 
 BENCHMARK_MAIN();

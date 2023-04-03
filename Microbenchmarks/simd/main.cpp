@@ -1,10 +1,12 @@
 #include <intrin.h>
 #include <benchmark/benchmark.h>
 
+#define SMALL (2000)
+#define MEDIUM (30000)
+#define LARGE (800000)
+
 double *array;
 double results[2] = {0.0, 0.0};
-
-
 
 double array_sum(int n);
 double array_sum_simd(int n);
@@ -92,10 +94,7 @@ double array_sum_simd(int n)
     return sumTotal;
 }
 
-#define START (1 << 10)
-#define END (1 << 20)
-
-BENCHMARK(array_sum_benchmark)->Setup(DoSetup)->Teardown(DoTeardown)->RangeMultiplier(2)->Range(START, END);
-BENCHMARK(array_sum_simd_benchmark)->Setup(DoSetup)->Teardown(DoTeardown)->RangeMultiplier(2)->Range(START, END);
+BENCHMARK(array_sum_benchmark)->Setup(DoSetup)->Teardown(DoTeardown)->Unit(benchmark::kMillisecond)->Arg(SMALL)->Arg(MEDIUM)->Arg(LARGE);
+BENCHMARK(array_sum_simd_benchmark)->Setup(DoSetup)->Teardown(DoTeardown)->Unit(benchmark::kMillisecond)->Arg(SMALL)->Arg(MEDIUM)->Arg(LARGE);
 
 BENCHMARK_MAIN();

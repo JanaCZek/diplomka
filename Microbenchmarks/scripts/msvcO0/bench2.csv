@@ -1,0 +1,22 @@
+2023-04-03T16:53:15+02:00
+Running ..\out\build\x64-Debug-O0\matrix-multiplication-variations\matrix-multiplication-variations.exe
+Run on (8 X 1800 MHz CPU s)
+CPU Caches:
+  L1 Data 32 KiB (x4)
+  L1 Instruction 32 KiB (x4)
+  L2 Unified 256 KiB (x4)
+  L3 Unified 6144 KiB (x1)
+***WARNING*** Library was built as DEBUG. Timings may be affected.
+name,iterations,real_time,cpu_time,time_unit,bytes_per_second,items_per_second,label,error_occurred,error_message
+"ijk/45",2800,0.252479,0.256696,ms,,,,,
+"ijk/170",45,15.1088,14.9306,ms,,,,,
+"jik/45",2800,0.252359,0.251116,ms,,,,,
+"jik/170",45,14.1594,14.2361,ms,,,,,
+"jki/45",2240,0.311413,0.313895,ms,,,,,
+"jki/170",34,20.8583,21.1397,ms,,,,,
+"kji/45",2240,0.311146,0.30692,ms,,,,,
+"kji/170",34,19.92,19.761,ms,,,,,
+"kij/45",2240,0.318085,0.320871,ms,,,,,
+"kij/170",37,17.8656,17.7365,ms,,,,,
+"ikj/45",2240,0.328351,0.334821,ms,,,,,
+"ikj/170",37,19.1167,18.5811,ms,,,,,

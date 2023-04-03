@@ -1,0 +1,22 @@
+2023-04-03T14:51:46-00:00
+Running ..\build\clangO2\matrix-multiplication-variations\matrix-multiplication-variations.exe
+Run on (8 X 1800 MHz CPU s)
+CPU Caches:
+  L1 Data 32 KiB (x4)
+  L1 Instruction 32 KiB (x4)
+  L2 Unified 256 KiB (x4)
+  L3 Unified 6144 KiB (x1)
+***WARNING*** Library was built as DEBUG. Timings may be affected.
+name,iterations,real_time,cpu_time,time_unit,bytes_per_second,items_per_second,label,error_occurred,error_message
+"ijk/45",8960,0.0786201,0.0784738,ms,,,,,
+"ijk/170",112,5.70902,5.58036,ms,,,,,
+"jik/45",8960,0.0849168,0.0854492,ms,,,,,
+"jik/170",112,6.5444,6.2779,ms,,,,,
+"jki/45",8960,0.0895396,0.0889369,ms,,,,,
+"jki/170",90,6.8862,6.77083,ms,,,,,
+"kji/45",6400,0.0796789,0.078125,ms,,,,,
+"kji/170",75,7.19578,7.29167,ms,,,,,
+"kij/45",11200,0.0575865,0.0571987,ms,,,,,
+"kij/170",204,3.34383,3.2935,ms,,,,,
+"ikj/45",11200,0.0576733,0.0571987,ms,,,,,
+"ikj/170",224,3.55432,3.55748,ms,,,,,

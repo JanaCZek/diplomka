@@ -145,12 +145,9 @@ double pattern(int n)
     return sum;
 }
 
-#define START (1 << 1)
-#define END (1 << 10)
-
-BENCHMARK(sequential_benchmark)->Setup(DoSetup)->Teardown(DoTeardown)->Arg(1);
-BENCHMARK(pattern_benchmark)->Setup(DoSetup)->Teardown(DoTeardown)->Arg(1);
-BENCHMARK(strided_benchmark)->Setup(DoSetup)->Teardown(DoTeardown)->RangeMultiplier(2)->Range(START, END);
-BENCHMARK(random_benchmark)->Setup(DoSetup)->Teardown(DoTeardown)->Arg(1);
+BENCHMARK(sequential_benchmark)->Setup(DoSetup)->Teardown(DoTeardown)->Unit(benchmark::kMillisecond)->Arg(1);
+BENCHMARK(pattern_benchmark)->Setup(DoSetup)->Teardown(DoTeardown)->Unit(benchmark::kMillisecond)->Arg(1);
+BENCHMARK(strided_benchmark)->Setup(DoSetup)->Teardown(DoTeardown)->Unit(benchmark::kMillisecond)->Arg((1 << 1))->Arg((1 << 5))->Arg((1 << 10));
+BENCHMARK(random_benchmark)->Setup(DoSetup)->Teardown(DoTeardown)->Unit(benchmark::kMillisecond)->Arg(1);
 
 BENCHMARK_MAIN();

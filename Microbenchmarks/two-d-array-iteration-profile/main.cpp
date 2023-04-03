@@ -1,5 +1,9 @@
 #include <tracy/Tracy.hpp>
 
+#define SMALL (45)
+#define MEDIUM (170)
+#define LARGE (900)
+
 double **array;
 double results[2] = {0.0, 0.0};
 
@@ -50,7 +54,7 @@ int main()
 {
     ZoneScopedS(5);
 
-    const int sizes[] = {(1 << 8), (1 << 9), (1 << 10), (1 << 11)};
+    const int sizes[] = {SMALL, MEDIUM, LARGE};
     int sizesCount = sizeof(sizes) / sizeof(const int);
 
     for (int sizeIndex = 0; sizeIndex < sizesCount; sizeIndex++)

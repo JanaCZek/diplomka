@@ -73,9 +73,7 @@ int main()
     int stridedN = ACCESS_COUNT * step;
 
     array = (double *)calloc(n, sizeof(double));
-    TracyAlloc(array, n * sizeof(double));
     arrayStrided = (double *)calloc(stridedN, sizeof(double));
-    TracyAlloc(arrayStrided, stridedN * sizeof(double));
 
     for (int i = 0; i < n; i++)
     {
@@ -146,9 +144,7 @@ int main()
     }
 
     free(array);
-    TracyFree(array);
     free(arrayStrided);
-    TracyFree(arrayStrided);
 
     return 0;
 }

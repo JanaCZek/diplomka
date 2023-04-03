@@ -51,6 +51,6 @@ double cache_associativity_limit(int step, int n)
     return sum;
 }
 
-BENCHMARK(cache_associativity_limit_benchmark)->Setup(DoSetup)->Teardown(DoTeardown)->Arg(30)->Arg(32)->Arg(60)->Arg(64)->Arg(120)->Arg(128)->Arg(250)->Arg(256)->Arg(510)->Arg(512);
+BENCHMARK(cache_associativity_limit_benchmark)->Setup(DoSetup)->Teardown(DoTeardown)->Unit(benchmark::kMillisecond)->Arg(30)->Arg(32)->Arg(60)->Arg(64)->Arg(120)->Arg(128)->Arg(250)->Arg(256)->Arg(510)->Arg(512);
 
 BENCHMARK_MAIN();

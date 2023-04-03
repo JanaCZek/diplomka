@@ -1,8 +1,8 @@
 #include <benchmark/benchmark.h>
 
-#define N (1 << 11)
-#define ROWS N
-#define COLS N
+#define SMALL (45)
+#define MEDIUM (170)
+#define LARGE (900)
 
 double **array;
 double results[2] = {0.0, 0.0};
@@ -12,16 +12,18 @@ void cols_rows();
 
 static void DoSetup(const benchmark::State &state)
 {
-    array = (double **)calloc(ROWS, sizeof(double *));
+    int n = state.range(0);
 
-    for (int row = 0; row < COLS; row++)
+    array = (double **)calloc(n, sizeof(double *));
+
+    for (int row = 0; row < n; row++)
     {
-        array[row] = (double *)calloc(COLS, sizeof(double *));
+        array[row] = (double *)calloc(n, sizeof(double *));
     }
 
-    for (int i = 0; i < ROWS; i++)
+    for (int i = 0; i < n; i++)
     {
-        for (int j = 0; j < COLS; j++)
+        for (int j = 0; j < n; j++)
         {
             array[i][j] = ((i + 1) * (j + 1)) % 100;
         }
@@ -30,7 +32,9 @@ static void DoSetup(const benchmark::State &state)
 
 static void DoTeardown(const benchmark::State &state)
 {
-    for (int row = 0; row < COLS; row++)
+    int n = state.range(0);
+
+    for (int row = 0; row < n; row++)
     {
         free(array[row]);
     }
@@ -42,10 +46,12 @@ static void rows_cols(benchmark::State &state)
 {
     for (auto _ : state)
     {
+        int n = state.range(0);
+
         double sum = 0;
-        for (int i = 0; i < ROWS; i++)
+        for (int i = 0; i < n; i++)
         {
-            for (int j = 0; j < COLS; j++)
+            for (int j = 0; j < n; j++)
             {
                 sum += array[i][j];
             }
@@ -60,10 +66,12 @@ static void cols_rows(benchmark::State &state)
 {
     for (auto _ : state)
     {
+        int n = state.range(0);
+
         double sum = 0;
-        for (int j = 0; j < COLS; j++)
+        for (int j = 0; j < n; j++)
         {
-            for (int i = 0; i < ROWS; i++)
+            for (int i = 0; i < n; i++)
             {
                 sum += array[i][j];
             }
@@ -74,7 +82,7 @@ static void cols_rows(benchmark::State &state)
     }
 }
 
-BENCHMARK(rows_cols)->Setup(DoSetup)->Teardown(DoTeardown);
-BENCHMARK(cols_rows)->Setup(DoSetup)->Teardown(DoTeardown);
+BENCHMARK(rows_cols)->Setup(DoSetup)->Teardown(DoTeardown)->Unit(benchmark::kMillisecond)->Arg(SMALL)->Arg(MEDIUM)->Arg(LARGE);
+BENCHMARK(cols_rows)->Setup(DoSetup)->Teardown(DoTeardown)->Unit(benchmark::kMillisecond)->Arg(SMALL)->Arg(MEDIUM)->Arg(LARGE);
 
 BENCHMARK_MAIN();

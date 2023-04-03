@@ -1,6 +1,9 @@
 #include <benchmark/benchmark.h>
 
 #define SEED (0)
+#define SMALL (2000)
+#define MEDIUM (30000)
+#define LARGE (800000)
 
 double *array;
 double results[3] = {0.0, 0.0, 0.0};
@@ -108,10 +111,8 @@ double not_so_predictable(const double *array, int n)
     return result;
 }
 
-#define N (1 << 20)
-
-BENCHMARK(never_benchmark)->Setup(DoSetup)->Teardown(DoTeardown)->Arg(N);
-BENCHMARK(always_benchmark)->Setup(DoSetup)->Teardown(DoTeardown)->Arg(N);
-BENCHMARK(not_so_predictable_benchmark)->Setup(DoSetup)->Teardown(DoTeardown)->Arg(N);
+BENCHMARK(never_benchmark)->Setup(DoSetup)->Teardown(DoTeardown)->Unit(benchmark::kMillisecond)->Arg(SMALL)->Arg(MEDIUM)->Arg(LARGE);
+BENCHMARK(always_benchmark)->Setup(DoSetup)->Teardown(DoTeardown)->Unit(benchmark::kMillisecond)->Arg(SMALL)->Arg(MEDIUM)->Arg(LARGE);
+BENCHMARK(not_so_predictable_benchmark)->Setup(DoSetup)->Teardown(DoTeardown)->Unit(benchmark::kMillisecond)->Arg(SMALL)->Arg(MEDIUM)->Arg(LARGE);
 
 BENCHMARK_MAIN();

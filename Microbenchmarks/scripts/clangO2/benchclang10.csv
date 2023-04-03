@@ -1,0 +1,16 @@
+2023-04-03T14:52:42-00:00
+Running ..\build\clangO2\structure-size\structure-size.exe
+Run on (8 X 1800 MHz CPU s)
+CPU Caches:
+  L1 Data 32 KiB (x4)
+  L1 Instruction 32 KiB (x4)
+  L2 Unified 256 KiB (x4)
+  L3 Unified 6144 KiB (x1)
+***WARNING*** Library was built as DEBUG. Timings may be affected.
+name,iterations,real_time,cpu_time,time_unit,bytes_per_second,items_per_second,label,error_occurred,error_message
+"data_benchmark/2000",640000,0.00109556,0.00109863,ms,,,,,
+"data_benchmark/30000",26353,0.0272898,0.0272739,ms,,,,,
+"data_benchmark/800000",249,2.9179,2.76104,ms,,,,,
+"data_ordered_benchmark/2000",746667,0.000943797,0.000941685,ms,,,,,
+"data_ordered_benchmark/30000",40727,0.0174537,0.0168807,ms,,,,,
+"data_ordered_benchmark/800000",560,1.24264,1.25558,ms,,,,,

@@ -1,0 +1,16 @@
+2023-04-03T14:48:07-00:00
+Running ..\build\gccO0\simd\simd.exe
+Run on (8 X 1800 MHz CPU s)
+CPU Caches:
+  L1 Data 32 KiB (x4)
+  L1 Instruction 32 KiB (x4)
+  L2 Unified 256 KiB (x4)
+  L3 Unified 6144 KiB (x1)
+***WARNING*** Library was built as DEBUG. Timings may be affected.
+name,iterations,real_time,cpu_time,time_unit,bytes_per_second,items_per_second,label,error_occurred,error_message
+"array_sum_benchmark/2000",89600,0.00710914,0.00697545,ms,,,,,
+"array_sum_benchmark/30000",7467,0.0921276,0.0920718,ms,,,,,
+"array_sum_benchmark/800000",264,2.64293,2.66335,ms,,,,,
+"array_sum_simd_benchmark/2000",112000,0.00477106,0.0047433,ms,,,,,
+"array_sum_simd_benchmark/30000",11200,0.0715601,0.0711496,ms,,,,,
+"array_sum_simd_benchmark/800000",345,2.08092,2.08333,ms,,,,,

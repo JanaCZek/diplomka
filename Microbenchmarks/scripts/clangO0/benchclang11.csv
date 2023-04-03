@@ -1,0 +1,19 @@
+2023-04-03T14:51:24-00:00
+Running ..\build\clangO0\predictability\predictability.exe
+Run on (8 X 1800 MHz CPU s)
+CPU Caches:
+  L1 Data 32 KiB (x4)
+  L1 Instruction 32 KiB (x4)
+  L2 Unified 256 KiB (x4)
+  L3 Unified 6144 KiB (x1)
+***WARNING*** Library was built as DEBUG. Timings may be affected.
+name,iterations,real_time,cpu_time,time_unit,bytes_per_second,items_per_second,label,error_occurred,error_message
+"never_benchmark/2000",149333,0.00467997,0.0046038,ms,,,,,
+"never_benchmark/30000",8960,0.0706632,0.0697545,ms,,,,,
+"never_benchmark/800000",373,1.9612,1.96883,ms,,,,,
+"always_benchmark/2000",100000,0.00542675,0.00546875,ms,,,,,
+"always_benchmark/30000",8960,0.0814583,0.0819615,ms,,,,,
+"always_benchmark/800000",299,2.32719,2.35159,ms,,,,,
+"not_so_predictable_benchmark/2000",149333,0.00562008,0.00565012,ms,,,,,
+"not_so_predictable_benchmark/30000",3200,0.213839,0.209961,ms,,,,,
+"not_so_predictable_benchmark/800000",112,5.77077,5.71987,ms,,,,,

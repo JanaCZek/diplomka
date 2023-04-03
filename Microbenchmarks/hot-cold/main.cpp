@@ -1,5 +1,9 @@
 #include <benchmark/benchmark.h>
 
+#define SMALL (2000)
+#define MEDIUM (30000)
+#define LARGE (800000)
+
 double results[2] = {0.0, 0.0};
 
 struct Data
@@ -111,10 +115,7 @@ void separated(int n)
     }
 }
 
-#define START (1 << 10)
-#define END (1 << 20)
-
-BENCHMARK(together_benchmark)->Setup(DoSetup)->Teardown(DoTeardown)->RangeMultiplier(2)->Range(START, END);
-BENCHMARK(separated_benchmark)->Setup(DoSetup)->Teardown(DoTeardown)->RangeMultiplier(2)->Range(START, END);
+BENCHMARK(together_benchmark)->Setup(DoSetup)->Teardown(DoTeardown)->Unit(benchmark::kMillisecond)->Arg(SMALL)->Arg(MEDIUM)->Arg(LARGE);
+BENCHMARK(separated_benchmark)->Setup(DoSetup)->Teardown(DoTeardown)->Unit(benchmark::kMillisecond)->Arg(SMALL)->Arg(MEDIUM)->Arg(LARGE);
 
 BENCHMARK_MAIN();

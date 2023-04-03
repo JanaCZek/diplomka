@@ -1,0 +1,13 @@
+2023-04-03T16:56:13+02:00
+Running ..\out\build\x64-Debug-O2\false-sharing\false-sharing.exe
+Run on (8 X 1800 MHz CPU s)
+CPU Caches:
+  L1 Data 32 KiB (x4)
+  L1 Instruction 32 KiB (x4)
+  L2 Unified 256 KiB (x4)
+  L3 Unified 6144 KiB (x1)
+***WARNING*** Library was built as DEBUG. Timings may be affected.
+name,iterations,real_time,cpu_time,time_unit,bytes_per_second,items_per_second,label,error_occurred,error_message
+"true_sharing_benchmark/1048576",5,137.905,140.625,ms,,,,,
+"false_sharing_benchmark/1048576",112,4.76143,4.7433,ms,,,,,
+"false_sharing_fix_benchmark/1048576",407,1.72078,1.68919,ms,,,,,

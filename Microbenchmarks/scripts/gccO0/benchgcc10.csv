@@ -1,0 +1,16 @@
+2023-04-03T14:48:12-00:00
+Running ..\build\gccO0\structure-size\structure-size.exe
+Run on (8 X 1800 MHz CPU s)
+CPU Caches:
+  L1 Data 32 KiB (x4)
+  L1 Instruction 32 KiB (x4)
+  L2 Unified 256 KiB (x4)
+  L3 Unified 6144 KiB (x1)
+***WARNING*** Library was built as DEBUG. Timings may be affected.
+name,iterations,real_time,cpu_time,time_unit,bytes_per_second,items_per_second,label,error_occurred,error_message
+"data_benchmark/2000",112000,0.00611605,0.00613839,ms,,,,,
+"data_benchmark/30000",7467,0.12256,0.121367,ms,,,,,
+"data_benchmark/800000",154,4.67031,4.66721,ms,,,,,
+"data_ordered_benchmark/2000",112000,0.00596689,0.00599888,ms,,,,,
+"data_ordered_benchmark/30000",8960,0.0897143,0.0906808,ms,,,,,
+"data_ordered_benchmark/800000",213,3.46176,3.2277,ms,,,,,

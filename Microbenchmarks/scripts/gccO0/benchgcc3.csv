@@ -1,0 +1,16 @@
+2023-04-03T14:47:22-00:00
+Running ..\build\gccO0\loop-carried-dependence\loop-carried-dependence.exe
+Run on (8 X 1800 MHz CPU s)
+CPU Caches:
+  L1 Data 32 KiB (x4)
+  L1 Instruction 32 KiB (x4)
+  L2 Unified 256 KiB (x4)
+  L3 Unified 6144 KiB (x1)
+***WARNING*** Library was built as DEBUG. Timings may be affected.
+name,iterations,real_time,cpu_time,time_unit,bytes_per_second,items_per_second,label,error_occurred,error_message
+"with_dependence/2000",89600,0.00762477,0.00767299,ms,,,,,
+"with_dependence/30000",6400,0.112079,0.112305,ms,,,,,
+"with_dependence/800000",160,5.69067,5.66406,ms,,,,,
+"without_dependence/2000",89600,0.00784326,0.00767299,ms,,,,,
+"without_dependence/30000",5600,0.118491,0.117188,ms,,,,,
+"without_dependence/800000",100,5.25962,5.15625,ms,,,,,

@@ -1,0 +1,16 @@
+2023-04-03T14:52:26-00:00
+Running ..\build\clangO2\hot-cold\hot-cold.exe
+Run on (8 X 1800 MHz CPU s)
+CPU Caches:
+  L1 Data 32 KiB (x4)
+  L1 Instruction 32 KiB (x4)
+  L2 Unified 256 KiB (x4)
+  L3 Unified 6144 KiB (x1)
+***WARNING*** Library was built as DEBUG. Timings may be affected.
+name,iterations,real_time,cpu_time,time_unit,bytes_per_second,items_per_second,label,error_occurred,error_message
+"together_benchmark/2000",298667,0.00226906,0.00224958,ms,,,,,
+"together_benchmark/30000",11200,0.0604231,0.0599888,ms,,,,,
+"together_benchmark/800000",100,6.23261,6.25,ms,,,,,
+"separated_benchmark/2000",373333,0.00196773,0.00196708,ms,,,,,
+"separated_benchmark/30000",20364,0.032415,0.032226,ms,,,,,
+"separated_benchmark/800000",236,3.51855,3.509,ms,,,,,

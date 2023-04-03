@@ -1,10 +1,11 @@
 #include <benchmark/benchmark.h>
 
+#define SMALL (45)
+#define MEDIUM (170)
+
 double **A;
 double **B;
 double **C;
-
-
 
 void ijk();
 void jik();
@@ -189,14 +190,11 @@ static void ikj(benchmark::State &state)
     }
 }
 
-#define N1 50
-#define N2 100
-
-BENCHMARK(ijk)->Setup(DoSetup)->Arg(N1)->Arg(N2)->Teardown(DoTeardown);
-BENCHMARK(jik)->Setup(DoSetup)->Arg(N1)->Arg(N2)->Teardown(DoTeardown);
-BENCHMARK(jki)->Setup(DoSetup)->Arg(N1)->Arg(N2)->Teardown(DoTeardown);
-BENCHMARK(kji)->Setup(DoSetup)->Arg(N1)->Arg(N2)->Teardown(DoTeardown);
-BENCHMARK(kij)->Setup(DoSetup)->Arg(N1)->Arg(N2)->Teardown(DoTeardown);
-BENCHMARK(ikj)->Setup(DoSetup)->Arg(N1)->Arg(N2)->Teardown(DoTeardown);
+BENCHMARK(ijk)->Setup(DoSetup)->Arg(SMALL)->Arg(MEDIUM)->Teardown(DoTeardown)->Unit(benchmark::kMillisecond);
+BENCHMARK(jik)->Setup(DoSetup)->Arg(SMALL)->Arg(MEDIUM)->Teardown(DoTeardown)->Unit(benchmark::kMillisecond);
+BENCHMARK(jki)->Setup(DoSetup)->Arg(SMALL)->Arg(MEDIUM)->Teardown(DoTeardown)->Unit(benchmark::kMillisecond);
+BENCHMARK(kji)->Setup(DoSetup)->Arg(SMALL)->Arg(MEDIUM)->Teardown(DoTeardown)->Unit(benchmark::kMillisecond);
+BENCHMARK(kij)->Setup(DoSetup)->Arg(SMALL)->Arg(MEDIUM)->Teardown(DoTeardown)->Unit(benchmark::kMillisecond);
+BENCHMARK(ikj)->Setup(DoSetup)->Arg(SMALL)->Arg(MEDIUM)->Teardown(DoTeardown)->Unit(benchmark::kMillisecond);
 
 BENCHMARK_MAIN();

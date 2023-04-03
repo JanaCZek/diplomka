@@ -1,0 +1,16 @@
+2023-04-03T14:47:54-00:00
+Running ..\build\gccO0\hot-cold\hot-cold.exe
+Run on (8 X 1800 MHz CPU s)
+CPU Caches:
+  L1 Data 32 KiB (x4)
+  L1 Instruction 32 KiB (x4)
+  L2 Unified 256 KiB (x4)
+  L3 Unified 6144 KiB (x1)
+***WARNING*** Library was built as DEBUG. Timings may be affected.
+name,iterations,real_time,cpu_time,time_unit,bytes_per_second,items_per_second,label,error_occurred,error_message
+"together_benchmark/2000",37333,0.0176595,0.0171598,ms,,,,,
+"together_benchmark/30000",2133,0.264469,0.256388,ms,,,,,
+"together_benchmark/800000",64,11.7546,10.9863,ms,,,,,
+"separated_benchmark/2000",49778,0.0102556,0.0103585,ms,,,,,
+"separated_benchmark/30000",4978,0.149977,0.150663,ms,,,,,
+"separated_benchmark/800000",149,4.2067,4.19463,ms,,,,,

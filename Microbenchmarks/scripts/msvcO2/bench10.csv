@@ -1,0 +1,16 @@
+2023-04-03T16:55:59+02:00
+Running ..\out\build\x64-Debug-O2\structure-size\structure-size.exe
+Run on (8 X 1800 MHz CPU s)
+CPU Caches:
+  L1 Data 32 KiB (x4)
+  L1 Instruction 32 KiB (x4)
+  L2 Unified 256 KiB (x4)
+  L3 Unified 6144 KiB (x1)
+***WARNING*** Library was built as DEBUG. Timings may be affected.
+name,iterations,real_time,cpu_time,time_unit,bytes_per_second,items_per_second,label,error_occurred,error_message
+"data_benchmark/2000",448000,0.00132099,0.00129046,ms,,,,,
+"data_benchmark/30000",23579,0.0297294,0.02982,ms,,,,,
+"data_benchmark/800000",249,2.86052,2.8238,ms,,,,,
+"data_ordered_benchmark/2000",497778,0.00122131,0.00122419,ms,,,,,
+"data_ordered_benchmark/30000",34462,0.0197597,0.0194961,ms,,,,,
+"data_ordered_benchmark/800000",498,1.30533,1.31777,ms,,,,,

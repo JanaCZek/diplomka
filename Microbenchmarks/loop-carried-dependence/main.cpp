@@ -1,5 +1,9 @@
 #include <benchmark/benchmark.h>
 
+#define SMALL (2000)
+#define MEDIUM (30000)
+#define LARGE (800000)
+
 double *A;
 double *B;
 double *C;
@@ -64,10 +68,7 @@ static void without_dependence(benchmark::State &state)
     }
 }
 
-#define START (1 << 1)
-#define END (1 << 20)
-
-BENCHMARK(with_dependence)->Setup(DoSetup)->Teardown(DoTeardown)->RangeMultiplier(2)->Range(START, END);
-BENCHMARK(without_dependence)->Setup(DoSetup)->Teardown(DoTeardown)->RangeMultiplier(2)->Range(START, END);
+BENCHMARK(with_dependence)->Setup(DoSetup)->Teardown(DoTeardown)->Unit(benchmark::kMillisecond)->Arg(SMALL)->Arg(MEDIUM)->Arg(LARGE);
+BENCHMARK(without_dependence)->Setup(DoSetup)->Teardown(DoTeardown)->Unit(benchmark::kMillisecond)->Arg(SMALL)->Arg(MEDIUM)->Arg(LARGE);
 
 BENCHMARK_MAIN();

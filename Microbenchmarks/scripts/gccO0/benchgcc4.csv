@@ -1,0 +1,19 @@
+2023-04-03T14:47:28-00:00
+Running ..\build\gccO0\loop-unrolling\loop-unrolling.exe
+Run on (8 X 1800 MHz CPU s)
+CPU Caches:
+  L1 Data 32 KiB (x4)
+  L1 Instruction 32 KiB (x4)
+  L2 Unified 256 KiB (x4)
+  L3 Unified 6144 KiB (x1)
+***WARNING*** Library was built as DEBUG. Timings may be affected.
+name,iterations,real_time,cpu_time,time_unit,bytes_per_second,items_per_second,label,error_occurred,error_message
+"array_sum_benchmark/2000",100000,0.00582392,0.00578125,ms,,,,,
+"array_sum_benchmark/30000",8960,0.0893882,0.0906808,ms,,,,,
+"array_sum_benchmark/800000",299,2.40983,2.40385,ms,,,,,
+"array_sum_unrolled_2_benchmark/2000",248889,0.00286176,0.00276228,ms,,,,,
+"array_sum_unrolled_2_benchmark/30000",16593,0.0437289,0.0433165,ms,,,,,
+"array_sum_unrolled_2_benchmark/800000",498,1.56472,1.5374,ms,,,,,
+"array_sum_unrolled_4_benchmark/2000",344615,0.00238195,0.00231236,ms,,,,,
+"array_sum_unrolled_4_benchmark/30000",20364,0.0457716,0.042968,ms,,,,,
+"array_sum_unrolled_4_benchmark/800000",320,2.2223,2.24609,ms,,,,,
