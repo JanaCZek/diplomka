@@ -13,6 +13,6 @@ Small = 2000 elements
 Medium = 30000 elements
 Large = 800000 elements
 
-Small matrix = 45 x 45 elements = 2025 B
+Small matrix = 45 x 45 elements ~ 16 kB
 Medium matrix = 170 x 170 elements ~ 231 kB
 Large matrix = 900 x 900 elements ~ 6 480 kB
