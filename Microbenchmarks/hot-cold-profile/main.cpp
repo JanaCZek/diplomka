@@ -1,4 +1,16 @@
+// #define TRACY_ON 1
+
+#ifdef TRACY_ON
 #include <tracy/Tracy.hpp>
+#endif
+
+#ifndef TRACY_ON
+#include <stdlib.h>
+#endif
+
+#define SMALL (2000)
+#define MEDIUM (30000)
+#define LARGE (800000)
 
 double results[2] = {0.0, 0.0};
 
@@ -31,12 +43,13 @@ void separated(int n);
 
 void together(int n)
 {
+#ifdef TRACY_ON
     char functionName[32] = {'\0'};
     sprintf(functionName, "Together, size: %d", n);
 
     ZoneScopedNS("Together", 5);
     ZoneName(functionName, strlen(functionName));
-
+#endif
     for (int i = 0; i < n; i++)
     {
         data[i].result = data[i].a + data[i].b * data[i].c;
@@ -45,12 +58,13 @@ void together(int n)
 
 void separated(int n)
 {
+#ifdef TRACY_ON
     char functionName[32] = {'\0'};
     sprintf(functionName, "Separated, size: %d", n);
 
     ZoneScopedNS("Separated", 5);
     ZoneName(functionName, strlen(functionName));
-
+#endif
     for (int i = 0; i < n; i++)
     {
         dataHotCold.hot[i].result = dataHotCold.hot[i].a + dataHotCold.hot[i].b * dataHotCold.hot[i].c;
@@ -59,21 +73,23 @@ void separated(int n)
 
 int main()
 {
+#ifdef TRACY_ON
     ZoneScopedS(5);
-
-    const int sizes[] = {(1 << 10), (1 << 11), (1 << 12), (1 << 13), (1 << 14), (1 << 15), (1 << 16), (1 << 17), (1 << 18), (1 << 19), (1 << 20)};
+#endif
+    const int sizes[] = {SMALL, MEDIUM, LARGE};
     int sizesCount = sizeof(sizes) / sizeof(const int);
 
     for (int sizeIndex = 0; sizeIndex < sizesCount; sizeIndex++)
     {
         const int n = sizes[sizeIndex];
 
+#ifdef TRACY_ON
         char functionName[32] = {'\0'};
         sprintf(functionName, "Size: %d", n);
 
         ZoneScopedN("Size");
         ZoneName(functionName, strlen(functionName));
-
+#endif
         data = (Data *)calloc(n, sizeof(Data));
         dataHotCold.hot = (DataHot *)calloc(n, sizeof(DataHot));
         dataHotCold.cold = (DataCold *)calloc(n, sizeof(DataCold));
@@ -103,12 +119,13 @@ int main()
         }
 
         {
+#ifdef TRACY_ON
             char functionName[32] = {'\0'};
             sprintf(functionName, "Together, size: %d", n);
 
             ZoneScopedN("Together");
             ZoneName(functionName, strlen(functionName));
-
+#endif
             for (int repeat = 0; repeat < 997; repeat++)
             {
                 together(n);
@@ -119,12 +136,13 @@ int main()
         }
 
         {
+#ifdef TRACY_ON
             char functionName[32] = {'\0'};
             sprintf(functionName, "Separated, size: %d", n);
 
             ZoneScopedN("Separated");
             ZoneName(functionName, strlen(functionName));
-
+#endif
             for (int repeat = 0; repeat < 997; repeat++)
             {
                 separated(n);

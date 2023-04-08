@@ -1,5 +1,18 @@
-#include <intrin.h>
+// #define TRACY_ON 1
+
+#ifdef TRACY_ON
 #include <tracy/Tracy.hpp>
+#endif
+
+#ifndef TRACY_ON
+#include <stdlib.h>
+#endif
+
+#include <intrin.h>
+
+#define SMALL (2000)
+#define MEDIUM (30000)
+#define LARGE (800000)
 
 double *array;
 double results[2] = {0.0, 0.0};
@@ -9,12 +22,13 @@ double array_sum_simd(int n);
 
 double array_sum(int n)
 {
+#ifdef TRACY_ON
     char functionName[32] = {'\0'};
     sprintf(functionName, "Array sum, size: %d", n);
 
-    ZoneScopedN("Array sum");
+    ZoneScopedNS("Array sum", 5);
     ZoneName(functionName, strlen(functionName));
-
+#endif
     double sum = 0.0;
 
     for (int i = 0; i < n; i++)
@@ -27,12 +41,13 @@ double array_sum(int n)
 
 double array_sum_simd(int n)
 {
+#ifdef TRACY_ON
     char functionName[32] = {'\0'};
     sprintf(functionName, "Array sum SIMD, size: %d", n);
 
-    ZoneScopedN("Array sum SIMD");
+    ZoneScopedNS("Array sum SIMD", 5);
     ZoneName(functionName, strlen(functionName));
-
+#endif
     // SSE specific step
     int step = 128 / (sizeof(double) * 8);
     int sumSize = step;
@@ -59,26 +74,25 @@ double array_sum_simd(int n)
     return sumTotal;
 }
 
-#define START (1 << 10)
-#define END (1 << 20)
-
 int main()
 {
+#ifdef TRACY_ON
     ZoneScopedS(5);
-
-    const int sizes[] = {(1 << 10), (1 << 11), (1 << 12), (1 << 13), (1 << 14), (1 << 15), (1 << 16), (1 << 17), (1 << 18), (1 << 19), (1 << 20)};
+#endif
+    const int sizes[] = {SMALL, MEDIUM, LARGE};
     int sizesCount = sizeof(sizes) / sizeof(const int);
 
     for (int sizeIndex = 0; sizeIndex < sizesCount; sizeIndex++)
     {
         const int n = sizes[sizeIndex];
 
+#ifdef TRACY_ON
         char functionName[32] = {'\0'};
         sprintf(functionName, "Size: %d", n);
 
-        ZoneScopedN("Size");
+        ZoneScopedNS("Size", 5);
         ZoneName(functionName, strlen(functionName));
-
+#endif
         array = (double *)_aligned_malloc(sizeof(double) * n, 16);
 
         for (int i = 0; i < n; i++)
@@ -87,12 +101,13 @@ int main()
         }
 
         {
+#ifdef TRACY_ON
             char functionName[32] = {'\0'};
             sprintf(functionName, "Array sum, size: %d", n);
 
-            ZoneScopedN("Array sum");
+            ZoneScopedNS("Array sum", 5);
             ZoneName(functionName, strlen(functionName));
-
+#endif
             double sum = 0.0;
 
             for (int repeat = 0; repeat < 997; repeat++)
@@ -105,12 +120,13 @@ int main()
         }
 
         {
+#ifdef TRACY_ON
             char functionName[32] = {'\0'};
             sprintf(functionName, "Array sum SIMD, size: %d", n);
 
-            ZoneScopedN("Array sum SIMD");
+            ZoneScopedNS("Array sum SIMD", 5);
             ZoneName(functionName, strlen(functionName));
-
+#endif
             double sum = 0.0;
 
             for (int repeat = 0; repeat < 997; repeat++)
