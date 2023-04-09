@@ -1,4 +1,4 @@
-// #define TRACY_ON 1
+#define TRACY_ON 1
 
 #ifdef TRACY_ON
 #include <tracy/Tracy.hpp>
@@ -101,16 +101,18 @@ int main()
         }
 
         {
+            double sum = 0.0;
 #ifdef TRACY_ON
             char functionName[32] = {'\0'};
             sprintf(functionName, "Array sum, size: %d", n);
 
             ZoneScopedNS("Array sum", 5);
             ZoneName(functionName, strlen(functionName));
-#endif
-            double sum = 0.0;
-
             for (int repeat = 0; repeat < 997; repeat++)
+#endif
+#ifndef TRACY_ON
+            for (int repeat = 0; repeat < 18997; repeat++)
+#endif
             {
                 sum = array_sum(n);
 
@@ -120,16 +122,18 @@ int main()
         }
 
         {
+            double sum = 0.0;
 #ifdef TRACY_ON
             char functionName[32] = {'\0'};
             sprintf(functionName, "Array sum SIMD, size: %d", n);
 
             ZoneScopedNS("Array sum SIMD", 5);
             ZoneName(functionName, strlen(functionName));
-#endif
-            double sum = 0.0;
-
             for (int repeat = 0; repeat < 997; repeat++)
+#endif
+#ifndef TRACY_ON
+            for (int repeat = 0; repeat < 18997; repeat++)
+#endif
             {
                 sum = array_sum_simd(n);
 

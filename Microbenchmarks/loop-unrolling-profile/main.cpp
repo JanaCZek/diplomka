@@ -1,4 +1,4 @@
-// #define TRACY_ON 1
+#define TRACY_ON 1
 
 #ifdef TRACY_ON
 #include <tracy/Tracy.hpp>

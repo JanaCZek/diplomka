@@ -1,4 +1,4 @@
-// #define TRACY_ON 1
+#define TRACY_ON 1
 
 #ifdef TRACY_ON
 #include <tracy/Tracy.hpp>
@@ -125,8 +125,12 @@ int main()
 
             ZoneScopedN("Together");
             ZoneName(functionName, strlen(functionName));
-#endif
+
             for (int repeat = 0; repeat < 997; repeat++)
+#endif
+#ifndef TRACY_ON
+             for (int repeat = 0; repeat < 2997; repeat++)
+#endif
             {
                 together(n);
 
@@ -142,8 +146,11 @@ int main()
 
             ZoneScopedN("Separated");
             ZoneName(functionName, strlen(functionName));
-#endif
             for (int repeat = 0; repeat < 997; repeat++)
+#endif
+#ifndef TRACY_ON
+            for (int repeat = 0; repeat < 2997; repeat++)
+#endif
             {
                 separated(n);
 
