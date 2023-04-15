@@ -1,0 +1,7 @@
+Vygenerovat obsah diplomky
+Zjistit zarovnání sloupců tabulek a předěly mezi stránkami
+Datum v prohlášení podle data odevzdání
+Při exportu zkontrolovat PDF/A formát
+Zaslat diplomku vedoucímu a zajistit vyjádření pro sekretářku
+Odevzdat originál zadání pro tisk
+Odevzdat diplomku s přihláškou na SZZ + Prohlášení k DP
