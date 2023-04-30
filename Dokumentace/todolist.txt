@@ -1,5 +1,5 @@
 Vygenerovat obsah diplomky
-Zjistit zarovnání sloupců tabulek a předěly mezi stránkami
+Zjistit zarovnání sloupců tabulek a předěly mezi stránkami DONE
 Datum v prohlášení podle data odevzdání
 Při exportu zkontrolovat PDF/A formát
 Zaslat diplomku vedoucímu a zajistit vyjádření pro sekretářku
@@ -19,9 +19,9 @@ Závěr - "Hlavní přínos..." - přeformulovat DONE
 Závěr - zhodnocení DONE
 
 
-Výsledky -> ukázky
-Vlastní přínos na konec -> přínos práce
-Uvést optimalizace
-Slide 18 -> závěr
-Za konečný slide přidat otázky oponenta
-Přidat celkový počet slidů
+Výsledky -> ukázky DONE
+Vlastní přínos na konec -> přínos práce ODSTRAŇENO
+Uvést optimalizace DONE
+Slide 18 -> závěr NAHRAZENO UKÁZKOU PŘÍNOSU OPTIMALIZACÍ
+Za konečný slide přidat otázky oponenta DONE
+Přidat celkový počet slidů DONE
