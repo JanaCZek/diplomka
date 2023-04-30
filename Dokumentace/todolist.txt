@@ -1,4 +1,5 @@
 Vygenerovat obsah diplomky
+Přegenerovat seznamy obrázků, tabulek a zdrojových kódů
 Zjistit zarovnání sloupců tabulek a předěly mezi stránkami DONE
 Datum v prohlášení podle data odevzdání
 Při exportu zkontrolovat PDF/A formát
