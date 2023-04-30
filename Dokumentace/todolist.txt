@@ -5,3 +5,23 @@ Při exportu zkontrolovat PDF/A formát
 Zaslat diplomku vedoucímu a zajistit vyjádření pro sekretářku
 Odevzdat originál zadání pro tisk
 Odevzdat diplomku s přihláškou na SZZ + Prohlášení k DP
+
+Tabulka 1 - šířka sloupce DONE
+Doplnit SIMD teorii DONE
+Přímá citace - odkaz za ní DONE
+Zhodnotit přínos optimalizací na reálném příkladu V PREZENTACI
+Popis tabulky před tabulku DONE
+Popis obrázku před obrázek DONE
+Sadu doporučení členit do sekcí DONE
+U tabulek se odkázat na teorii DONE
+Přidat odstavce do závěru DONE
+Závěr - "Hlavní přínos..." - přeformulovat DONE
+Závěr - zhodnocení DONE
+
+
+Výsledky -> ukázky
+Vlastní přínos na konec -> přínos práce
+Uvést optimalizace
+Slide 18 -> závěr
+Za konečný slide přidat otázky oponenta
+Přidat celkový počet slidů
