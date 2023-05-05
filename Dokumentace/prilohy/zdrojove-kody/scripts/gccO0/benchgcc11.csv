@@ -1,0 +1,19 @@
+2023-04-03T14:48:18-00:00
+Running ..\build\gccO0\predictability\predictability.exe
+Run on (8 X 1800 MHz CPU s)
+CPU Caches:
+  L1 Data 32 KiB (x4)
+  L1 Instruction 32 KiB (x4)
+  L2 Unified 256 KiB (x4)
+  L3 Unified 6144 KiB (x1)
+***WARNING*** Library was built as DEBUG. Timings may be affected.
+name,iterations,real_time,cpu_time,time_unit,bytes_per_second,items_per_second,label,error_occurred,error_message
+"never_benchmark/2000",112000,0.00548409,0.00558036,ms,,,,,
+"never_benchmark/30000",8960,0.0790463,0.0802176,ms,,,,,
+"never_benchmark/800000",264,2.35666,2.36742,ms,,,,,
+"always_benchmark/2000",112000,0.00644379,0.0062779,ms,,,,,
+"always_benchmark/30000",6400,0.0951807,0.0952148,ms,,,,,
+"always_benchmark/800000",264,2.82635,2.78172,ms,,,,,
+"not_so_predictable_benchmark/2000",112000,0.00549891,0.00544085,ms,,,,,
+"not_so_predictable_benchmark/30000",2987,0.234673,0.230164,ms,,,,,
+"not_so_predictable_benchmark/800000",112,6.69241,6.69643,ms,,,,,

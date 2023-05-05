@@ -1,0 +1,13 @@
+2023-04-03T14:52:59-00:00
+Running ..\build\clangO2\false-sharing\false-sharing.exe
+Run on (8 X 1800 MHz CPU s)
+CPU Caches:
+  L1 Data 32 KiB (x4)
+  L1 Instruction 32 KiB (x4)
+  L2 Unified 256 KiB (x4)
+  L3 Unified 6144 KiB (x1)
+***WARNING*** Library was built as DEBUG. Timings may be affected.
+name,iterations,real_time,cpu_time,time_unit,bytes_per_second,items_per_second,label,error_occurred,error_message
+"true_sharing_benchmark/1048576",14,99.9279,39.0625,ms,,,,,
+"false_sharing_benchmark/1048576",204,3.37123,2.83395,ms,,,,,
+"false_sharing_fix_benchmark/1048576",373,1.79262,1.71749,ms,,,,,

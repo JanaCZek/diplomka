@@ -1,0 +1,31 @@
+cmake_minimum_required(VERSION 3.0.0)
+
+project(microbenchmarks)
+
+set(BENCHMARK_ENABLE_GTEST_TESTS OFF)
+set(TRACY_ENABLE ON)
+#set(CMAKE_CXX_FLAGS "/O2")
+#set(CMAKE_CXX_FLAGS_DEBUG "/O2")
+#set(CMAKE_CXX_FLAGS_RELEASE "/O2")
+
+add_subdirectory(two-d-array-iteration)
+add_subdirectory(matrix-multiplication-variations)
+add_subdirectory(loop-carried-dependence)
+add_subdirectory(loop-unrolling)
+add_subdirectory(cache-associativity-limit)
+add_subdirectory(array-index-patterns)
+add_subdirectory(hot-cold)
+add_subdirectory(aos-soa)
+add_subdirectory(simd)
+add_subdirectory(structure-size)
+add_subdirectory(predictability)
+add_subdirectory(false-sharing)
+add_subdirectory(memory-aliasing)
+
+add_subdirectory(hot-cold-profile)
+add_subdirectory(loop-unrolling-profile)
+add_subdirectory(simd-profile)
+add_subdirectory(two-d-array-iteration-profile)
+
+add_subdirectory("libs\\benchmark" "benchmark")
+add_subdirectory("libs\\tracy" "tracy")

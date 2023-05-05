@@ -1,0 +1,12 @@
+2023-04-03T16:54:33+02:00
+Running ..\out\build\x64-Debug-O0\memory-aliasing\memory-aliasing.exe
+Run on (8 X 1800 MHz CPU s)
+CPU Caches:
+  L1 Data 32 KiB (x4)
+  L1 Instruction 32 KiB (x4)
+  L2 Unified 256 KiB (x4)
+  L3 Unified 6144 KiB (x1)
+***WARNING*** Library was built as DEBUG. Timings may be affected.
+name,iterations,real_time,cpu_time,time_unit,bytes_per_second,items_per_second,label,error_occurred,error_message
+"write_read_benchmark/1048576",345,2.1406,2.12862,ms,,,,,
+"write_read_aliased_benchmark/1048576",75,7.85513,7.70833,ms,,,,,

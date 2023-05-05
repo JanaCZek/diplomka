@@ -1,0 +1,12 @@
+2023-04-03T14:49:57-00:00
+Running ..\build\gccO2\memory-aliasing\memory-aliasing.exe
+Run on (8 X 1800 MHz CPU s)
+CPU Caches:
+  L1 Data 32 KiB (x4)
+  L1 Instruction 32 KiB (x4)
+  L2 Unified 256 KiB (x4)
+  L3 Unified 6144 KiB (x1)
+***WARNING*** Library was built as DEBUG. Timings may be affected.
+name,iterations,real_time,cpu_time,time_unit,bytes_per_second,items_per_second,label,error_occurred,error_message
+"write_read_benchmark/1048576",2240,0.313822,0.313895,ms,,,,,
+"write_read_aliased_benchmark/1048576",112,5.30732,5.30134,ms,,,,,

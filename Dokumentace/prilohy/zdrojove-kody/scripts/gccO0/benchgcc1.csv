@@ -1,0 +1,16 @@
+2023-04-03T14:47:05-00:00
+Running ..\build\gccO0\two-d-array-iteration\two-d-array-iteration.exe
+Run on (8 X 1800 MHz CPU s)
+CPU Caches:
+  L1 Data 32 KiB (x4)
+  L1 Instruction 32 KiB (x4)
+  L2 Unified 256 KiB (x4)
+  L3 Unified 6144 KiB (x1)
+***WARNING*** Library was built as DEBUG. Timings may be affected.
+name,iterations,real_time,cpu_time,time_unit,bytes_per_second,items_per_second,label,error_occurred,error_message
+"rows_cols/45",112000,0.00546778,0.00544085,ms,,,,,
+"rows_cols/170",8960,0.0792443,0.0784738,ms,,,,,
+"rows_cols/900",320,2.3029,2.29492,ms,,,,,
+"cols_rows/45",100000,0.00547887,0.00546875,ms,,,,,
+"cols_rows/170",8960,0.0800192,0.0802176,ms,,,,,
+"cols_rows/900",154,4.56858,4.56575,ms,,,,,

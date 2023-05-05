@@ -1,0 +1,13 @@
+2023-04-03T14:49:53-00:00
+Running ..\build\gccO2\false-sharing\false-sharing.exe
+Run on (8 X 1800 MHz CPU s)
+CPU Caches:
+  L1 Data 32 KiB (x4)
+  L1 Instruction 32 KiB (x4)
+  L2 Unified 256 KiB (x4)
+  L3 Unified 6144 KiB (x1)
+***WARNING*** Library was built as DEBUG. Timings may be affected.
+name,iterations,real_time,cpu_time,time_unit,bytes_per_second,items_per_second,label,error_occurred,error_message
+"true_sharing_benchmark/1048576",16,99.1292,47.8516,ms,,,,,
+"false_sharing_benchmark/1048576",264,3.30075,3.01847,ms,,,,,
+"false_sharing_fix_benchmark/1048576",407,1.7802,1.72758,ms,,,,,

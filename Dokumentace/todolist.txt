@@ -1,9 +1,9 @@
-Vygenerovat obsah diplomky
-Přegenerovat seznamy obrázků, tabulek a zdrojových kódů
+Vygenerovat obsah diplomky DONE
+Přegenerovat seznamy obrázků, tabulek a zdrojových kódů DONE
 Zjistit zarovnání sloupců tabulek a předěly mezi stránkami DONE
-Datum v prohlášení podle data odevzdání
+Datum v prohlášení podle data odevzdání DONE
 Při exportu zkontrolovat PDF/A formát
-Zaslat diplomku vedoucímu a zajistit vyjádření pro sekretářku
+Zaslat diplomku vedoucímu a zajistit vyjádření pro sekretářku DONE
 Odevzdat originál zadání pro tisk
 Odevzdat diplomku s přihláškou na SZZ + Prohlášení k DP
 

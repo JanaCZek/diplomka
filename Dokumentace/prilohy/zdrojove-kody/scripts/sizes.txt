@@ -1,0 +1,18 @@
+double  8 B
+L1      32 kB / core
+L3      6 MB
+
+L1 / double = 32768 / 8 = 4096 elements
+L3 / double = 6291456 / 8 = 786432 elements
+
+Fits L1 - x < 4096 elements
+Fits L3 - x < 786432 elements
+Too large for cache - x > 786432 elements
+
+Small = 2000 elements
+Medium = 30000 elements
+Large = 800000 elements
+
+Small matrix = 45 x 45 elements ~ 16 kB
+Medium matrix = 170 x 170 elements ~ 231 kB
+Large matrix = 900 x 900 elements ~ 6 480 kB

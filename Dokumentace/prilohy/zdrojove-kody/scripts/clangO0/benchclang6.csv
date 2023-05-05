@@ -1,0 +1,16 @@
+2023-04-03T14:50:57-00:00
+Running ..\build\clangO0\array-index-patterns\array-index-patterns.exe
+Run on (8 X 1800 MHz CPU s)
+CPU Caches:
+  L1 Data 32 KiB (x4)
+  L1 Instruction 32 KiB (x4)
+  L2 Unified 256 KiB (x4)
+  L3 Unified 6144 KiB (x1)
+***WARNING*** Library was built as DEBUG. Timings may be affected.
+name,iterations,real_time,cpu_time,time_unit,bytes_per_second,items_per_second,label,error_occurred,error_message
+"sequential_benchmark/1",24889,0.0270916,0.0269949,ms,,,,,
+"pattern_benchmark/1",18667,0.0364325,0.0359927,ms,,,,,
+"strided_benchmark/2",23579,0.0275268,0.027832,ms,,,,,
+"strided_benchmark/32",21333,0.030001,0.0300298,ms,,,,,
+"strided_benchmark/1024",4978,0.142663,0.144385,ms,,,,,
+"random_benchmark/1",4073,0.182676,0.184139,ms,,,,,

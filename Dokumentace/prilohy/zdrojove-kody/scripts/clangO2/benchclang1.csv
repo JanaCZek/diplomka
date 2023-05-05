@@ -1,0 +1,16 @@
+2023-04-03T14:51:40-00:00
+Running ..\build\clangO2\two-d-array-iteration\two-d-array-iteration.exe
+Run on (8 X 1800 MHz CPU s)
+CPU Caches:
+  L1 Data 32 KiB (x4)
+  L1 Instruction 32 KiB (x4)
+  L2 Unified 256 KiB (x4)
+  L3 Unified 6144 KiB (x1)
+***WARNING*** Library was built as DEBUG. Timings may be affected.
+name,iterations,real_time,cpu_time,time_unit,bytes_per_second,items_per_second,label,error_occurred,error_message
+"rows_cols/45",280000,0.00238761,0.00234375,ms,,,,,
+"rows_cols/170",17231,0.0362048,0.035365,ms,,,,,
+"rows_cols/900",640,1.19834,1.19629,ms,,,,,
+"cols_rows/45",280000,0.00243007,0.00239955,ms,,,,,
+"cols_rows/170",19478,0.037783,0.0377028,ms,,,,,
+"cols_rows/900",448,1.61333,1.63923,ms,,,,,

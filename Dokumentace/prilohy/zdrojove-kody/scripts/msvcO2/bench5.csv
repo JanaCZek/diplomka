@@ -1,0 +1,20 @@
+2023-04-03T16:55:26+02:00
+Running ..\out\build\x64-Debug-O2\cache-associativity-limit\cache-associativity-limit.exe
+Run on (8 X 1800 MHz CPU s)
+CPU Caches:
+  L1 Data 32 KiB (x4)
+  L1 Instruction 32 KiB (x4)
+  L2 Unified 256 KiB (x4)
+  L3 Unified 6144 KiB (x1)
+***WARNING*** Library was built as DEBUG. Timings may be affected.
+name,iterations,real_time,cpu_time,time_unit,bytes_per_second,items_per_second,label,error_occurred,error_message
+"cache_associativity_limit_benchmark/30",44800,0.0157002,0.0156948,ms,,,,,
+"cache_associativity_limit_benchmark/32",34462,0.0221562,0.0222165,ms,,,,,
+"cache_associativity_limit_benchmark/60",37333,0.0175927,0.0175783,ms,,,,,
+"cache_associativity_limit_benchmark/64",17920,0.0381493,0.037493,ms,,,,,
+"cache_associativity_limit_benchmark/120",37333,0.0203197,0.020508,ms,,,,,
+"cache_associativity_limit_benchmark/128",8960,0.0895607,0.0871931,ms,,,,,
+"cache_associativity_limit_benchmark/250",29867,0.0237363,0.0235419,ms,,,,,
+"cache_associativity_limit_benchmark/256",6400,0.117186,0.117188,ms,,,,,
+"cache_associativity_limit_benchmark/510",15448,0.0437389,0.0445041,ms,,,,,
+"cache_associativity_limit_benchmark/512",7467,0.103638,0.102534,ms,,,,,
