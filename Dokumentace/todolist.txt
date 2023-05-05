@@ -26,3 +26,10 @@ Uvést optimalizace DONE
 Slide 18 -> závěr NAHRAZENO UKÁZKOU PŘÍNOSU OPTIMALIZACÍ
 Za konečný slide přidat otázky oponenta DONE
 Přidat celkový počet slidů DONE
+
+
+Kapitola 5 do teoretické části DONE
+Projít citace u zdrojových kódů DONE
+Popsat varianty iterace matic DONE
+Popsat konkrétní závislost u loop carried dependence DONE
+Popsat hlavní a finalizační smyčku u unrollingu DONE
