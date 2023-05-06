@@ -2,10 +2,10 @@ Vygenerovat obsah diplomky DONE
 Přegenerovat seznamy obrázků, tabulek a zdrojových kódů DONE
 Zjistit zarovnání sloupců tabulek a předěly mezi stránkami DONE
 Datum v prohlášení podle data odevzdání DONE
-Při exportu zkontrolovat PDF/A formát
+Při exportu zkontrolovat PDF/A formát DONE
 Zaslat diplomku vedoucímu a zajistit vyjádření pro sekretářku DONE
 Odevzdat originál zadání pro tisk
-Odevzdat diplomku s přihláškou na SZZ + Prohlášení k DP
+Odevzdat diplomku s přihláškou na SZZ + Prohlášení k DP 3x
 
 Tabulka 1 - šířka sloupce DONE
 Doplnit SIMD teorii DONE
